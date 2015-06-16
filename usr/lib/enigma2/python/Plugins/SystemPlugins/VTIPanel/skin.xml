@@ -1,0 +1,508 @@
+<skin>
+<!--  you can enable color buttons in skin but on 750s sd skin there ist not much space left on screen.. to aviod scroolling in main menu.. i disabled them...-->
+<!--	<screen name="VTIMainMenu" position="center,110" size="625,420" title="VTI Panel" > -->
+<!-- 		<ePixmap pixmap="~/pictures/red.png" position="5,5" size="151,51" alphatest="on" /> -->
+<!--	 	<ePixmap pixmap="~/pictures/green.png" position="160,5" size="151,51" alphatest="on" /> -->
+<!--		<ePixmap pixmap="~/pictures/yellow.png" position="315,5" size="150,50" alphatest="on" /> -->
+<!--		<ePixmap pixmap="~/pictures/blue.png" position="470,5" size="150,50" alphatest="on" /> -->
+<!-- 		<widget source="key_red" render="Label" position="5,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" /> -->
+<!-- 		<widget source="key_green" render="Label" position="160,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" /> -->
+<!--		<widget source="key_yellow" render="Label" position="315,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" /> -->
+<!--		<widget source="key_blue" render="Label" position="470,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />  -->
+<!--		<widget source="list" render="Listbox" position="5,65" size="520,365" scrollbarMode="showOnDemand"> -->
+	<screen name="VTIPanelSummary" position="0,0" size="250,20">
+		<widget source="entry" render="RollerCharLCD" size="250,20" position="0,0" font="Regular;20" noWrap="1" />
+	</screen>
+	<screen name="VTIMainMenu" position="center,110" size="530,420" title="VTI Panel" >
+		<widget source="list" render="Listbox" position="5,5" size="520,410" scrollbarMode="showOnDemand">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+						MultiContentEntryText(pos = (110, 2), size = (440, 26), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0), # index 2 is the description
+						MultiContentEntryText(pos = (110, 28), size = (440, 26), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2), # index 2 is the description
+						MultiContentEntryPixmapAlphaTest(pos = (2, 1), size = (100, 50), png = 3), # index 4 is the status pixmap
+						MultiContentEntryPixmapAlphaTest(pos = (0, 54), size = (510, 2), png = 4), # index 4 is the div pixmap
+					],
+				"fonts": [gFont("Regular", 24),gFont("Regular", 16)],
+				"itemHeight": 58
+				}
+			</convert>
+		</widget>
+	</screen>
+	<screen name="VTISubMenu" position="center,110" size="460,360" title="VTI Sub Menu" >
+		<ePixmap pixmap="~/pictures/red.png" position="5,5" size="150,50" alphatest="on" />
+		<widget source="key_red" render="Label" position="5,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="list" render="Listbox" position="15,65" size="430,240" scrollbarMode="showOnDemand">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+						MultiContentEntryPixmapAlphaTest(pos = (2, 2), size = (44, 44), png = 3), # index 4 is the status pixmap
+						MultiContentEntryText(pos = (52, 2), size = (380, 24), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1), # index 0 is the MenuText,
+						MultiContentEntryText(pos = (52, 26), size = (380, 20), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2), # index 0 is the MenuText,
+					],
+				"fonts": [gFont("Regular", 22),gFont("Regular", 16)],
+				"itemHeight": 48
+				}
+			</convert>
+		</widget>
+		<widget source="status" render="Label" position="15,310" size="430,40" halign="center" valign="center" font="Regular;22" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
+	</screen>
+	<screen name="VTIStatusListMenu" position="center,110" size="625,360"  title="VTI Status List Menu" >
+		<widget name="pic_red" pixmap="~/pictures/red.png" position="5,5" size="150,50" alphatest="on" />
+		<widget name="pic_green" pixmap="~/pictures/green.png" position="160,5" size="150,50" alphatest="on" />
+		<widget name="pic_yellow" pixmap="~/pictures/yellow.png" position="315,5" size="150,50" alphatest="on" />
+		<widget name="pic_blue" pixmap="~/pictures/blue.png" position="470,5" size="150,50" alphatest="on" />		
+		<widget name="key_red" position="5,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget name="key_green" position="160,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget name="key_yellow" position="315,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget name="key_blue" position="470,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget source="list" render="Listbox" position="15,65" size="595,280" scrollbarMode="showOnDemand">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+							MultiContentEntryText(pos = (30, 0), size = (450, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+							MultiContentEntryPixmapAlphaTest(pos = (1, 1), size = (24, 24), png = 3) # index 4 is the status pixmap
+					],
+				"fonts": [gFont("Regular", 24),gFont("Regular", 16)],
+				"itemHeight": 28
+				}
+			</convert>
+		</widget>
+	</screen>
+	<screen name="CamSelectMenu" position="center,110" size="625,360"  title="VTI Cam Menu" >
+		<ePixmap pixmap="~/pictures/red.png" position="5,5" size="150,50" alphatest="on" />
+		<ePixmap pixmap="~/pictures/green.png" position="160,5" size="150,50" alphatest="on" />
+		<ePixmap pixmap="~/pictures/yellow.png" position="315,5" size="150,50" alphatest="on" />
+		<ePixmap pixmap="~/pictures/blue.png" position="470,5" size="150,50" alphatest="on" />
+		<widget source="key_red" render="Label" position="5,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="160,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget source="key_yellow" render="Label" position="315,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_blue" render="Label" position="470,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget source="list" render="Listbox" position="15,65" size="610,200" scrollbarMode="showOnDemand">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+							MultiContentEntryText(pos = (30, 0), size = (360, 26), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+							MultiContentEntryPixmapAlphaTest(pos = (1, 1), size = (24, 24), png = 2) # index 4 is the status pixmap
+					],
+				"fonts": [gFont("Regular", 24),gFont("Regular", 16)],
+				"itemHeight": 28
+				}
+			</convert>
+		</widget>
+	</screen>
+	<screen name="BitrateViewer" position="center,110" size="350,230"  title="Bitrate Viewer" >
+		<ePixmap pixmap="~/pictures/red.png" position="100,175" size="150,50" alphatest="on" />
+		<widget source="video" render="Label" position="15,10" zPosition="1" size="80,20" font="Regular;20" />
+		<widget source="min" render="Label" position="15,30" zPosition="1" size="80,20" font="Regular;20" />
+		<widget name="vmin" position="15,50" size="80,20" font="Regular;20" />
+		<widget source="max" render="Label" position="85,30" zPosition="1" size="80,20" font="Regular;20" />
+		<widget name="vmax" position="85,50" size="80,20" font="Regular;20" />
+		<widget source="avg" render="Label" position="165,30" zPosition="1" size="80,20" font="Regular;20" />
+		<widget name="vavg" position="165,50" size="80,20" font="Regular;20" />
+		<widget source="cur" render="Label" position="265,30" zPosition="1" size="80,20" font="Regular;20" />
+		<widget name="vcur" position="265,50" size="80,20" font="Regular;20" />
+		<widget source="audio" render="Label" position="15,80" zPosition="1" size="80,20" font="Regular;20" />
+		<widget source="min" render="Label" position="15,100" zPosition="1" size="80,20" font="Regular;20" />
+		<widget name="amin" position="15,120" size="80,20" font="Regular;20" />
+		<widget source="max" render="Label" position="85,100" zPosition="1" size="80,20" font="Regular;20" />
+		<widget name="amax" position="85,120" size="80,20" font="Regular;20" />
+		<widget source="avg" render="Label" position="165,100" zPosition="1" size="80,20" font="Regular;20" />
+		<widget name="aavg" position="165,120" size="80,20" font="Regular;20" />
+		<widget source="cur" render="Label" position="265,100" zPosition="1" size="80,20" font="Regular;20" />
+		<widget name="acur" position="265,120" size="80,20" font="Regular;20" />
+		<widget name="cancel" position="100,175" size="150,50" valign="center" halign="center" zPosition="1" font="Regular;20" transparent="1" backgroundColor="red" />
+	</screen>
+	<screen name="BackupScreen" position="135,144" size="350,310" title="Backup is running" >
+		<widget name="config" position="10,10" size="330,250" transparent="1" scrollbarMode="showOnDemand" />
+	</screen>
+	<screen name="BackupSelection" position="center,110" size="560,400" title="Select files/folders to backup">
+		<ePixmap pixmap="~/pictures/red.png" position="0,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="~/pictures/green.png" position="140,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="~/pictures/yellow.png" position="280,0" size="140,40" alphatest="on" />
+		<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget source="key_yellow" render="Label" position="280,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#a08500" transparent="1" />
+		<widget name="checkList" position="5,50" size="550,250" transparent="1" scrollbarMode="showOnDemand" />
+	</screen>
+	<screen name="RestoreMenu" position="center,110" size="560,400" title="Restore backups" >
+		<ePixmap pixmap="~/pictures/red.png" position="0,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="~/pictures/green.png" position="140,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="~/pictures/yellow.png" position="280,0" size="140,40" alphatest="on" />
+		<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget source="key_yellow" render="Label" position="280,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#a08500" transparent="1" />
+		<widget name="filelist" position="5,50" size="550,230" scrollbarMode="showOnDemand" />
+	</screen>
+	<screen name="RestoreMenuImage" position="center,110" size="560,400" title="Restore BackupImage" >
+		<ePixmap pixmap="~/pictures/red.png" position="0,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="~/pictures/green.png" position="140,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="~/pictures/yellow.png" position="280,0" size="140,40" alphatest="on" />
+		<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget source="key_yellow" render="Label" position="280,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#a08500" transparent="1" />
+		<widget name="filelist" position="5,50" size="550,230" scrollbarMode="showOnDemand" />
+	</screen>
+	<screen position="135,144" size="350,310" title="Restore is running..." >
+		<widget name="config" position="10,10" size="330,250" transparent="1" scrollbarMode="showOnDemand" />
+	</screen>
+	<screen name="NTPManager" position="center,110" size="560,430" title="NTP-Server Contenant Selection" >
+		<widget name="menu" position="10,0" size="550,420" scrollbarMode="showOnDemand" />
+	</screen>
+	<screen name="SelectCountry" position="center,110" size="560,430" title="NTP-Server Country Selection" >
+		<widget name="countrymenu" position="10,0" size="550,420" scrollbarMode="showOnDemand" />
+	</screen>
+	<screen name="myPacketManager" position="center,110" size="530,420" title="VTI Cam Downloader" >
+		<ePixmap pixmap="~/pictures/red.png" position="5,5" size="150,50" alphatest="on" />
+		<ePixmap pixmap="~/pictures/green.png" position="160,5" size="150,50" alphatest="on" />
+		<widget source="key_red" render="Label" position="5,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="160,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget source="list" render="Listbox" position="5,65" size="520,365" scrollbarMode="showOnDemand">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+						MultiContentEntryText(pos = (5, 28), size = (440, 20), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0), # index 0 is the name
+						MultiContentEntryText(pos = (5, 2), size = (440, 26), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2), # index 2 is the description
+						MultiContentEntryPixmapAlphaTest(pos = (445, 2), size = (48, 48), png = 4), # index 4 is the status pixmap
+						MultiContentEntryPixmapAlphaTest(pos = (5, 50), size = (510, 2), png = 5), # index 4 is the div pixmap
+					],
+				"fonts": [gFont("Regular", 22),gFont("Regular", 14)],
+				"itemHeight": 52
+				}
+			</convert>
+		</widget>
+	</screen>
+	<screen name="VTIPasswdScreen" position="center,145" size="625,260" title="Change root password" >
+		<ePixmap pixmap="~/pictures/red.png" position="5,5" size="150,50" alphatest="on" />
+		<ePixmap pixmap="~/pictures/green.png" position="160,5" size="150,50" alphatest="on" />
+		<ePixmap pixmap="~/pictures/yellow.png" position="315,5" size="150,50" alphatest="on" />
+		<ePixmap pixmap="~/pictures/blue.png" position="470,5" size="150,50" alphatest="on" />
+		<widget source="key_red" render="Label" position="5,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="160,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget source="key_yellow" render="Label" position="315,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_blue" render="Label" position="470,5" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget name="passwd" position="10,85" size="605,30" scrollbarMode="showOnDemand" />
+	</screen>
+	<screen name="VtiNews" position="center,center" size="650,450" title="VTI News" >
+		<widget name="newsVTI" position="10,10" size="630,350" font="Regular;20" halign="center" />
+		<ePixmap pixmap="~/pictures/red.png" position="10,395" size="151,51" alphatest="on" /> -->
+		<ePixmap pixmap="~/pictures/green.png" position="165,395" size="151,51" alphatest="on" />
+		<ePixmap pixmap="~/pictures/yellow.png" position="320,395" size="151,51" alphatest="on" /> -->
+		<ePixmap pixmap="~/pictures/blue.png" position="475,395" size="151,51" alphatest="on" />
+		<widget source="key_red" render="Label" position="10,395" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="165,395" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+		<widget source="key_yellow" render="Label" position="320,395" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_blue" render="Label" position="475,395" zPosition="1" size="150,50" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
+	</screen>
+	<screen name="CronManager" position="center,center" size="600,400" title="CronManager" >
+		<widget name="showjobs" position="10,60" size="580,300" scrollbarMode="showOnDemand" />
+		<ePixmap pixmap="skin_default/buttons/red.png" position="5,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="145,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/yellow.png" position="285,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/blue.png" position="425,0" size="140,40" alphatest="on" />
+		<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+		<widget source="key_yellow" render="Label" position="280,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+		<widget source="key_blue" render="Label" position="420,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+	</screen>
+	<screen name="addJob" position="center,center" size="600,300" title="Add Cron Job" >
+		<ePixmap pixmap="skin_default/buttons/red.png" position="5,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="145,0" size="140,40" alphatest="on" />
+		<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+		<widget name="config" zPosition="2" position="10,60" size="580,200" scrollbarMode="showOnDemand" transparent="1" />
+	</screen>
+	<screen name="modifyJob" position="center,center" size="600,300" title="Modify Cron Job" >
+		<ePixmap pixmap="skin_default/buttons/red.png" position="5,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="145,0" size="140,40" alphatest="on" />
+		<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+		<widget name="config" zPosition="2" position="10,60" size="580,200" scrollbarMode="showOnDemand" transparent="1" />
+	</screen>
+	<screen name="CronManagerFile" position="center,center" size="600,400" title="Select file to execute">
+		<ePixmap pixmap="skin_default/buttons/red.png" position="5,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="145,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/blue.png" position="285,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+		<widget name="executable" position="10,50" size="540,50" valign="top" font="Regular;22" />
+		<widget name="keyblue" position="280,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="blue" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget name="filelist" position="10,90" zPosition="1" size="540,300" scrollbarMode="showOnDemand"/>
+		<widget render="Label" source="key_red" position="0,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="red" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget render="Label" source="key_green" position="140,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="green" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+	</screen>
+	<screen name="ExeManager" position="center,center" size="600,400" title="ExeManager" >
+		<widget name="showexe" position="10,60" size="580,300" scrollbarMode="showOnDemand" />
+		<ePixmap pixmap="skin_default/buttons/red.png" position="5,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="145,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/yellow.png" position="285,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/blue.png" position="425,0" size="140,40" alphatest="on" />
+		<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+		<widget source="key_yellow" render="Label" position="280,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+		<widget source="key_blue" render="Label" position="420,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+	</screen>
+	<screen name="addExe" position="center,center" size="600,300" title="Add executable" >
+		<ePixmap pixmap="skin_default/buttons/red.png" position="5,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="145,0" size="140,40" alphatest="on" />
+		<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+		<widget name="config" zPosition="2" position="10,60" size="580,200" scrollbarMode="showOnDemand" transparent="1" />
+	</screen>
+	<screen name="modifyExe" position="center,center" size="600,300" title="Modify executable" >
+		<ePixmap pixmap="skin_default/buttons/red.png" position="5,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="145,0" size="140,40" alphatest="on" />
+		<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+		<widget name="config" zPosition="2" position="10,60" size="580,200" scrollbarMode="showOnDemand" transparent="1" />
+	</screen>
+	<screen name="ExeManagerFile" position="center,center" size="600,400" title="Select file to execute">
+		<ePixmap pixmap="skin_default/buttons/red.png" position="5,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="145,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/blue.png" position="285,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+		<widget name="executable" position="10,50" size="540,50" valign="top" font="Regular;22" />
+		<widget name="keyblue" position="280,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="blue" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget name="filelist" position="10,90" zPosition="1" size="540,300" scrollbarMode="showOnDemand"/>
+		<widget render="Label" source="key_red" position="0,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="red" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget render="Label" source="key_green" position="140,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="green" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+	</screen>
+	<screen name="EPGPanel" position="center,center" size="600,300" title="VTI EPGPanel" >
+		<ePixmap pixmap="skin_default/buttons/red.png" position="5,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="145,0" size="140,40" alphatest="on" />
+		<widget name="status" position="10,50" size="540,80" valign="top" font="Regular;22" />
+		<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#9f1313" transparent="1" />
+		<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" backgroundColor="#1f771f" transparent="1" />
+		<widget name="config" zPosition="2" position="10,120" size="580,200" scrollbarMode="showOnDemand" transparent="1" />
+	</screen>
+	<screen name="BackupSuite" position="center,center" size="600,400" title="VTI BackupSuite" >
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_red.png" position="5,5" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_green.png" position="185,5" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_yellow.png" position="365,5" size="25,25" alphatest="on" />
+		<widget source="key_red" render="Label" position="35,0" zPosition="1" size="180,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget source="key_green" render="Label" position="215,0" zPosition="1" size="180,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget source="key_yellow" render="Label" position="395,0" zPosition="1" size="180,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget source="menu" render="Listbox" position="10,50" size="580,300" scrollbarMode="showOnDemand" >
+			<convert type="TemplatedMultiContent" transparent="0">
+				{"template": [
+						MultiContentEntryPixmapAlphaTest(pos = (2, 2), size = (44, 44), png = 3), # index 4 is the status pixmap
+						MultiContentEntryText(pos = (52, 2), size = (500, 24), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1), # index 1 is the MenuText,
+						MultiContentEntryText(pos = (52, 26), size = (580, 20), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2), # index 2 is the Description,
+					],
+				"fonts": [gFont("Regular", 22),gFont("Regular", 16)],
+				"itemHeight": 48
+				}
+			</convert>
+		</widget>
+	</screen>
+	<screen name="BackupSuiteRestore" position="center,center" size="600,400" title="Restore backups" >
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_red.png" position="5,5" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_green.png" position="185,5" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_yellow.png" position="365,5" size="25,25" alphatest="on" />
+		<widget source="key_red" render="Label" position="35,0" zPosition="1" size="180,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget source="key_green" render="Label" position="215,0" zPosition="1" size="180,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget source="key_yellow" render="Label" position="395,0" zPosition="1" size="180,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />" />
+		<widget name="filelist" position="5,50" size="580,230" scrollbarMode="showOnDemand" transparent="1"/>
+	</screen>
+	<screen name="DriverManager" position="center,center" size="600,400" title="VTI DriverManager" >
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_red.png" position="5,5" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_green.png" position="185,5" size="25,25" alphatest="on" />
+		<widget source="key_red" render="Label" position="35,0" zPosition="1" size="180,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget source="key_green" render="Label" position="215,0" zPosition="1" size="180,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget name="status" position="10,45" size="580,30" halign="center" valign="top" font="Regular;26" />
+		<widget source="menu" render="Listbox" position="10,80" size="580,270" scrollbarMode="showOnDemand" >
+			<convert type="TemplatedMultiContent" transparent="0">
+				{"template": [
+						MultiContentEntryPixmapAlphaTest(pos = (2, 2), size = (44, 44), png = 3), # index 4 is the status pixmap
+						MultiContentEntryText(pos = (52, 2), size = (500, 24), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1), # index 1 is the MenuText,
+						MultiContentEntryText(pos = (52, 26), size = (580, 20), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2), # index 2 is the Description,
+					],
+				"fonts": [gFont("Regular", 22),gFont("Regular", 16)],
+				"itemHeight": 48
+				}
+			</convert>
+		</widget>
+	</screen>
+		<screen name="DriverManagerDownload" position="center,center" size="600,400" title="VTI DriverManager" >
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_red.png" position="5,5" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_green.png" position="185,5" size="25,25" alphatest="on" />
+		<widget source="key_red" render="Label" position="35,0" zPosition="1" size="180,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget source="key_green" render="Label" position="215,0" zPosition="1" size="180,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget source="downloadmenu" render="Listbox" position="10,50" size="580,300" scrollbarMode="showOnDemand" >
+			<convert type="TemplatedMultiContent" transparent="0">
+				{"template": [
+						MultiContentEntryPixmapAlphaTest(pos = (2, 2), size = (44, 44), png = 3), # index 4 is the status pixmap
+						MultiContentEntryText(pos = (52, 2), size = (500, 24), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1), # index 1 is the MenuText,
+						MultiContentEntryText(pos = (52, 26), size = (580, 20), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2), # index 2 is the Description,
+					],
+				"fonts": [gFont("Regular", 22),gFont("Regular", 16)],
+				"itemHeight": 48
+				}
+			</convert>
+		</widget>
+	</screen>
+	<screen name="DriverManagerFile" position="center,center" size="600,400" title="Select driver to install">
+		<ePixmap pixmap="skin_default/buttons/red.png" position="5,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="145,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+		<widget name="driverfile" position="10,50" size="540,50" valign="top" font="Regular;22" />
+		<widget name="filelist" position="10,90" zPosition="1" size="540,300" scrollbarMode="showOnDemand"/>
+		<widget render="Label" source="key_red" position="0,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="red" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget render="Label" source="key_green" position="140,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="green" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+	</screen>
+	<screen name="MyPluginManager" position="center,110" size="700,500" title="VTI SoftwareManager" >
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_red.png" position="5,5" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_green.png" position="190,5" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_yellow.png" position="475,5" size="25,25" alphatest="on" />
+		<widget source="key_red" render="Label" position="35,5" zPosition="1" size="150,22" font="Regular;20" halign="left" valign="top" />
+		<widget name="key_green" position="220,5" size="250,22" font="Regular;20" halign="left" valign="top" />
+		<widget name="key_yellow" position="500,5" size="200,22" font="Regular;20" halign="left" valign="top" />
+		<widget source="list" render="Listbox" position="5,65" size="690,445" scrollbarMode="showOnDemand">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+						MultiContentEntryText(pos = (55, 2), size = (600, 24), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0), # index 2 is the description
+						MultiContentEntryText(pos = (55, 26), size = (600, 16), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2), # index 0 is the name
+						MultiContentEntryText(pos = (55, 42), size = (600, 16), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1), # index 2 is the description
+						MultiContentEntryPixmapAlphaTest(pos = (5, 2), size = (48, 48), png = 4), # index 4 is the status pixmap
+						MultiContentEntryPixmapAlphaTest(pos = (55, 59), size = (652, 2), png = 5), # index 4 is the div pixmap
+					],
+				"fonts": [gFont("Regular", 22),gFont("Regular", 14)],
+				"itemHeight": 61
+				}
+			</convert>
+		</widget>
+	</screen>
+	<screen name="ReduceMenuConfig" position="center,center" size="600,400" title="VTI ReduceMenu" >
+		<ePixmap pixmap="skin_default/buttons/red.png" position="0,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="140,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/yellow.png" position="280,0" size="140,40" alphatest="on" />
+		<widget render="Label" source="key_red" position="0,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="red" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget render="Label" source="key_green" position="140,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="green" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget render="Label" source="key_yellow" position="280,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="yellow" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget source="menu" render="Listbox" position="10,50" size="580,270" scrollbarMode="showOnDemand" >
+			<convert type="TemplatedMultiContent" transparent="0">
+				{"template": [
+					MultiContentEntryPixmapAlphaTest(pos = (4, 2), size = (48, 48), png = 2),
+					MultiContentEntryText(pos = (60, 12), size = (500, 24), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+					],
+				"fonts": [gFont("Regular", 22),gFont("Regular", 16)],
+				"itemHeight": 52
+				}
+			</convert>
+		</widget>
+	</screen>
+	<screen name="PanelPassword" position="center,center" size="600,100" title="Change password for VTI Panel" >
+		<ePixmap pixmap="skin_default/buttons/red.png" position="0,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="140,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/yellow.png" position="280,0" size="140,40" alphatest="on" />
+		<widget render="Label" source="key_red" position="0,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="red" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget render="Label" source="key_green" position="140,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="green" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget render="Label" source="key_yellow" position="280,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="yellow" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget name="config" zPosition="2" position="10,60" size="580,200" scrollbarMode="showOnDemand" transparent="1" />
+	</screen>
+	<screen name="InputPanelPassword" position="center,center" size="600,100" title="Input password for VTI Panel" >
+		<ePixmap pixmap="skin_default/buttons/red.png" position="0,0" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/green.png" position="140,0" size="140,40" alphatest="on" />
+		<widget render="Label" source="key_red" position="0,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="red" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget render="Label" source="key_green" position="140,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="green" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+		<widget name="config" zPosition="2" position="10,60" size="580,200" scrollbarMode="showOnDemand" transparent="1" />
+	</screen>
+	<screen name="InfoPanel" position="center,center" size="720,576">
+		<widget name="vtiversion" position="15,10" size="320,20"  font="Regular;18" halign="left" valign="center" transparent="1" />
+		<widget name="kernel" position="15,35" size="320,20"  font="Regular;18" halign="left" valign="center" transparent="1" />
+		<widget name="uptime" position="15,60" size="300,20"  font="Regular;18" halign="left" valign="center" transparent="1" />
+		<widget name="load" position="15,85" size="300,20"  font="Regular;18" halign="left" valign="center" transparent="1" />
+		<widget name="temp" position="405,260" size="300,20"  font="Regular;18" halign="left" valign="center" transparent="1" />
+		<widget name="fan" position="405,285" size="300,20"  font="Regular;18" halign="left" valign="center" transparent="1" />
+		<widget source="storagelist" render="Listbox" position="10,335" size="700,200" scrollbarMode="showOnDemand" >
+		<convert type="TemplatedMultiContent" transparent="0">
+			{"template": [
+					MultiContentEntryText(pos = (5, 2), size = (225, 20), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+					MultiContentEntryText(pos = (235, 2), size = (200, 20), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+					MultiContentEntryText(pos = (440, 2), size = (50, 20), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2),
+					MultiContentEntryText(pos = (500, 2), size = (95, 20), font=0, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 3),
+					MultiContentEntryText(pos = (605, 2), size = (95, 20), font=0, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 4),
+				],
+			"fonts": [gFont("Regular", 18),gFont("Regular", 16)],
+			"itemHeight": 24,
+			"selectionEnabled": False
+			}
+		</convert>
+		</widget>
+		<widget source="netdev" render="Listbox" position="350,30" size="355,80" scrollbarMode="showOnDemand" >
+		<convert type="TemplatedMultiContent" transparent="0">
+			{"template": [
+					MultiContentEntryText(pos = (5, 2), size = (80, 20), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+					MultiContentEntryText(pos = (100, 2), size = (110, 20), font=0, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+					MultiContentEntryText(pos = (225, 2), size = (110, 20), font=0, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 2),
+				],
+			"fonts": [gFont("Regular", 18),gFont("Regular", 16)],
+			"itemHeight": 24,
+			"selectionEnabled": False
+			}
+		</convert>
+		</widget>
+		<widget source="memory" render="Listbox" position="400,150" size="305,100" scrollbarMode="showOnDemand" >
+		<convert type="TemplatedMultiContent" transparent="0">
+			{"template": [
+					MultiContentEntryText(pos = (5, 2), size = (85, 20), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+					MultiContentEntryText(pos = (90, 2), size = (95, 20), font=0, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+					MultiContentEntryText(pos = (205, 2), size = (95, 20), font=0, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 2),
+				],
+			"fonts": [gFont("Regular", 18),gFont("Regular", 16)],
+			"itemHeight": 24,
+			"selectionEnabled": False
+			}
+		</convert>
+		</widget>
+		<widget source="proclist" render="Listbox" position="10,150" size="385,150" scrollbarMode="showOnDemand" >
+		<convert type="TemplatedMultiContent" transparent="0">
+			{"template": [
+					MultiContentEntryText(pos = (5, 2), size = (100, 20), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+					MultiContentEntryText(pos = (110, 2), size = (100, 20), font=0, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+					MultiContentEntryText(pos = (205, 2), size = (80, 20), font=0, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 2),
+					MultiContentEntryText(pos = (320, 2), size = (60, 20), font=0, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 3),
+				],
+			"fonts": [gFont("Regular", 18),gFont("Regular", 16)],
+			"itemHeight": 24,
+			"selectionEnabled": False
+			}
+		</convert>
+		</widget>
+		<eLabel position="5,130" zPosition="3" size="710,2" backgroundColor="foreground" />
+		<eLabel position="5,312" zPosition="3" size="710,2" backgroundColor="foreground" />
+		<eLabel position="5,540" zPosition="3" size="710,2" backgroundColor="foreground" />
+		<eLabel position="325,5" zPosition="3" size="2,125" backgroundColor="foreground" />
+		<eLabel position="396,130" zPosition="3" size="2,182" backgroundColor="foreground" />
+		<eLabel position="396,255" zPosition="3" size="319,2" backgroundColor="foreground" />
+		<widget source="key_red" render="Label" position="40,545" zPosition="1" size="150,40" font="Regular;20" halign="left" valign="center" transparent="1" />
+		<widget source="key_green" render="Label" position="225,545" zPosition="1" size="150,40" font="Regular;20" halign="left" valign="center" transparent="1" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_red.png" position="10,552"  size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_green.png" position="195,552" size="25,25" alphatest="on" />
+	</screen>
+	<screen name="AllNews" position="center,center" size="650,450" title="VTi News" >
+		<widget name="header" position="10,10" size="630,60" font="Regular;24" halign="center" />
+		<widget source="menu" render="Listbox" position="10,90" size="630,300" scrollbarMode="showOnDemand" >
+			<convert type="TemplatedMultiContent" transparent="0">
+				{"template": [
+						MultiContentEntryPixmapAlphaTest(pos = (0, 0), size = (48, 48), png = 2), # index 4 is the status pixmap
+						MultiContentEntryText(pos = (52, 2), size = (500, 44), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+					],
+				"fonts": [gFont("Regular", 24),gFont("Regular", 16)],
+				"itemHeight": 48
+				}
+			</convert>
+		</widget>
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_red.png" position="5,407" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_green.png" position="165,407" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_yellow.png" position="325,407" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_blue.png" position="485,407" size="25,25" alphatest="on" />
+		<widget source="key_red" render="Label" position="32,395" zPosition="1" size="130,50" font="Regular;20" halign="left" valign="center" />
+		<widget source="key_green" render="Label" position="192,395" zPosition="1" size="130,50" font="Regular;20" halign="left" valign="center" />
+		<widget source="key_yellow" render="Label" position="352,395" zPosition="1" size="130,50" font="Regular;20" halign="left" valign="center" />
+		<widget source="key_blue" render="Label" position="512,395" zPosition="1" size="130,50" font="Regular;20" halign="left" valign="center" />
+	</screen>
+		<screen name="VTiUpdateInfo" position="center,center" size="650,450" title="VTI News" >
+		<widget name="header" position="10,10" size="630,60" font="Regular;24" halign="center" />
+		<widget name="update" position="10,90" size="630,300" font="Regular;20" halign="left" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_red.png" position="5,407" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_green.png" position="165,407" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_yellow.png" position="325,407" size="25,25" alphatest="on" />
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/pictures/button_blue.png" position="485,407" size="25,25" alphatest="on" />
+		<widget source="key_red" render="Label" position="32,395" zPosition="1" size="130,50" font="Regular;20" halign="left" valign="center" />
+		<widget source="key_green" render="Label" position="192,395" zPosition="1" size="130,50" font="Regular;20" halign="left" valign="center" />
+		<widget source="key_yellow" render="Label" position="352,395" zPosition="1" size="130,50" font="Regular;20" halign="left" valign="center" />
+		<widget source="key_blue" render="Label" position="512,395" zPosition="1" size="130,50" font="Regular;20" halign="left" valign="center" />
+	</screen>
+</skin>

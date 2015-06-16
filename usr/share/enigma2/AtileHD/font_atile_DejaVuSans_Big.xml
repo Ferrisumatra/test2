@@ -1,0 +1,12 @@
+<skin>
+	<fonts>
+		<font filename="lcd.ttf" name="LCD" scale="100" />
+		<font filename="ae_AlMateen.ttf" name="Replacement" scale="109" replacement="1" />
+		<font filename="tuxtxt.ttf" name="Console" scale="109" />
+		<font filename="nmsbd.ttf" name="Arial" scale="109" />
+		<font filename="/usr/share/enigma2/AtileHD/fonts/DejaVuSansCondensed.ttf" name="Regular" scale="109" />
+		<font filename="/usr/share/enigma2/AtileHD/fonts/DejaVuSansCondensed.ttf" name="RegularLight" scale="90" />
+		<font filename="/usr/share/enigma2/AtileHD/fonts/meteocons.ttf" name="Meteo" scale="100" />
+	</fonts>
+</skin>
+

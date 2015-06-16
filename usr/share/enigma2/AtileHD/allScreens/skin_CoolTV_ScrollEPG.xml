@@ -1,0 +1,711 @@
+<skin>
+	<!-- CoolMultiEPG 6.x -->
+	<screen name="CoolTVGuide" position="0,0" size="1280,720" title="Cool TV Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool TV Guide" position="70,47" size="950,43" font="Regular;35" backgroundColor="backtop" foregroundColor="titletext" transparent="1" />
+		<widget name="date" position="1040,120" size="180,30" font="Regular; 20" halign="right" backgroundColor="background" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Service" render="CoolPico" position="70,585" zPosition="1" size="50,28" alphatest="on" />
+		<widget name="timeline_text" position="0,120" size="1150,30" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget name="list" position="70,150" size="1150,360" foregroundColor="foreground" backgroundColor="dark" scrollbarMode="showNever" transparent="1" />
+		<widget name="timeline0" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline1" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline2" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline3" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline4" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline5" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline_now" position="0,150" zPosition="2" size="19,360" pixmap="AtileHD/extensions/timelineCooltv.png" alphatest="on" />
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,510" size="1150,70" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget source="Event" render="Label" position="120,585" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="220,585" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format: - %H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="330,585" size="890,30" font="Regular; 24" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolMultiGuide" position="0,0" size="1280,720" title="Cool Multi Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="915,100" size="315,180" zPosition="-10" backgroundColor="tile_menu3" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.Event_Now" render="Progress" position="925,115" size="10,160" zPosition="1" transparent="1" orientation="orBottomToTop">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<eLabel text="Cool Multi Guide" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Service" render="CoolPico" position="70,105" zPosition="1" size="50,28" alphatest="on" />
+		<widget source="Event" render="Label" position="120,105" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="220,105" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format: - %H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="330,105" size="560,30" font="Regular; 24" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,140" size="820,140" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget name="date" position="1050,280" size="180,30" font="Regular; 20" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="timeline_text" position="0,280" size="1150,30" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget name="list" position="70,310" size="1150,300" foregroundColor="foreground" backgroundColor="dark" CoolBorderColR="#000000" CoolBorderColL="#000000" scrollbarMode="showNever" transparent="1" />
+		<widget name="timeline0" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline1" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline2" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline3" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline4" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline5" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline_now" position="0,310" zPosition="2" size="19,300" pixmap="AtileHD/extensions/timelineCooltv.png" alphatest="on" />
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolSingleGuide" position="0,0" size="1280,720" title="Cool Single Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="725,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="785,295" size="445,320" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="785,100" size="135,190" zPosition="-10" backgroundColor="tile_menu2" />
+		<eLabel position="925,100" size="305,190" zPosition="-10" backgroundColor="tile_menu_pig" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool Single Guide" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="Service" render="CoolPico" position="795,142" zPosition="1" size="100,60" alphatest="on" />
+		<widget source="Event" render="Label" position="800,205" size="100,30" font="Regular; 20" foregroundColor="foreground" backgroundColor="background" halign="center" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<eLabel text="-" position="843,227" size="15,15" font="Regular; 20" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Event" render="Label" position="800,250" size="100,30" font="Regular; 20" foregroundColor="foreground" backgroundColor="background" halign="center" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format:%H:%M</convert>
+		</widget>
+		<widget source="Service" render="Label" position="800,295" size="250,30" zPosition="3" font="Regular; 24" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="Event" render="Label" position="800,330" size="430,30" font="Regular; 22" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="800,360" size="430,250" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget name="date" position="1050,295" size="180,30" font="Regular; 24" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="list" position="70,110" size="700,505" itemHeight="28" zPosition="25" CoolFont="Regular;22" CoolEventFont="Regular;22" CoolDayPos="0" CoolDaySize="50" CoolTimePos="70" CoolTimeSize="70" CoolEventPos="150" selectionPixmap="AtileHD/extensions/cursor.png" CoolDayColor="white" CoolTimeColor="white" CoolEventColor="white" CoolBackColorSel="background" CoolRecColor="red" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolSingleGuide2" position="0,0" size="1280,720" title="Cool Single Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool Single Guide 2" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Event" render="Label" position="70,110" size="1000,30" font="Regular;24" foregroundColor="labeltext" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,140" size="100,165" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget source="Service" render="Label" position="70,315" size="1000,30" zPosition="3" font="Regular; 24" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="Event" render="Label" position="1110,315" size="110,30" font="Regular;24" halign="right" foregroundColor="blue" backgroundColor="background" transparent="1">
+			<convert type="EventTime">Remaining</convert>
+			<convert type="RemainingToText">InMinutes</convert>
+		</widget>
+		<widget name="list" position="70,355" size="1150,250" itemHeight="28" zPosition="25" CoolFont="Regular;22" CoolEventFont="Regular;22" CoolDayPos="0" CoolDaySize="50" CoolTimePos="70" CoolTimeSize="70" CoolEventPos="150" CoolEventSize="1040" selectionPixmap="AtileHD/extensions/cursor.png" CoolDayColor="white" CoolTimeColor="white" CoolEventColor="white" CoolRecColor="red" CoolBackColorSel="background" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolSingleGuide3" position="0,0" size="1280,720" title="Cool Single Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="415,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="735,360" size="495,255" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="735,100" size="495,255" zPosition="-10" backgroundColor="tile_menu_pig" />
+		<eLabel position="475,100" size="255,255" zPosition="-10" backgroundColor="tile_menu4" />
+		<eLabel position="475,360" size="255,255" zPosition="-10" backgroundColor="tile_menu5" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="session.VideoPicture" render="Pig" position="760,110" zPosition="3" size="445,235" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel text="Cool Single Guide 3" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget name="list" position="70,center" size="390,490" itemHeight="28" zPosition="25" CoolFont="Regular;22" CoolEventFont="Regular;22" CoolDayPos="0" CoolDaySize="50" CoolTimePos="70" CoolTimeSize="70" CoolEventPos="150" CoolEventSize="1040" selectionPixmap="AtileHD/extensions/cursor.png" CoolDayColor="white" CoolTimeColor="white" CoolEventColor="white" CoolRecColor="red" CoolBackColorSel="background" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Event" render="Label" position="520,210" size="80,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="600,210" size="100,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format: - %H:%M</convert>
+		</widget>
+		<widget source="Service" render="Label" position="475,135" size="255,30" zPosition="3" font="Regular; 24" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="Event" render="Label" position="547,275" size="110,30" font="Regular;24" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EventTime">Remaining</convert>
+			<convert type="RemainingToText">InMinutes</convert>
+		</widget>
+		<widget source="Event" render="Label" position="475,360" size="255,255" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="center">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="745,370" size="470,230" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolInfoGuide" position="0,0" size="1280,720" title="Cool Info Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="915,100" size="315,190" zPosition="-10" backgroundColor="tile_menu3" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.Event_Now" render="Progress" position="925,115" size="10,160" zPosition="1" transparent="1" orientation="orBottomToTop">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<eLabel text="Cool Info Guide" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Service" render="CoolPico" position="70,250" zPosition="1" size="50,28" alphatest="on" />
+		<widget source="Service" render="Label" position="70,105" size="400,40" zPosition="3" font="Regular;30" foregroundColor="labeltext" backgroundColor="background" transparent="1">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="Event" render="Label" position="120,250" size="100,30" font="Regular;26" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="220,250" size="100,30" font="Regular;26" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format: - %H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="320,250" size="150,30" font="Regular;25" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EventTime">Remaining</convert>
+			<convert type="RemainingToText">InMinutes</convert>
+		</widget>
+		<widget name="CoolSimilar" position="475,105" size="420,180" font="Regular; 20" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget name="CoolShort" position="70,160" size="400,75" font="Regular; 22" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="CoolEvent" position="70,300" size="1160,90" itemHeight="30" zPosition="5" CoolFont="Regular;22" CoolDayPos="0" CoolTimePos="60" CoolEventPos="250" CoolDurationPos="1010" CoolDaySize="60" CoolTimeSize="190" CoolDurationSize="140" CoolDayColor="titletext" CoolTimeColor="white" CoolEventColor="white" CoolDurationColor="titletext" CoolTunerCol="titletext" CoolRecColor="red" CoolBackColorSel="background" selectionPixmap="AtileHD/extensions/cursor.png" foregroundColor="foreground" transparent="1" />
+		<widget name="CoolDescription" position="70,400" size="1160,220" font="Regular; 22" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolEasyGuide" position="0,0" size="1280,720" title="Cool Easy Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="915,100" size="315,190" zPosition="-10" backgroundColor="tile_menu3" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool Easy Guide" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.Event_Now" render="Progress" position="925,115" size="10,160" zPosition="1" transparent="1" orientation="orBottomToTop">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<widget source="Service" render="CoolPico" position="70,106" zPosition="1" size="50,28" alphatest="on" />
+		<widget source="Event" render="Label" position="120,105" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="220,105" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format: - %H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="335,105" size="420,30" font="Regular; 24" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,140" size="820,165" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget name="date" position="770,105" size="120,30" font="Regular; 24" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="list" position="70,310" size="1160,310" itemHeight="28" zPosition="25" CoolFont="Regular;22" CoolServiceFont="Regular;22" CoolEventFont="Regular;22" CoolServiceSize="230" CoolEventSize="550" CoolServicePos="5" CoolServiceHPos="2" CoolEventPos="410" CoolEventHPos="2" CoolBarPos="230" CoolBarHPos="5" CoolBarSize="150" CoolBarHigh="18" CoolTimePos="230" CoolTimeHPos="2" CoolTimeSize="170" CoolDurationPos="990" CoolDurationSize="150" CoolDurationColor="blue" CoolServiceColor="titletext" CoolBarColor="grey" CoolEventColor="white" CoolCurrentCol="labeltext" CoolBackColorSel="background" CoolRecColor="red" CoolTunerCol="#606060" selectionPixmap="AtileHD/extensions/cursor.png" foregroundColor="foreground" backgroundColor="dark" transparent="1" />
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolEasyGuide2" position="0,0" size="1280,720" title="Cool Easy Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool Easy Guide 2" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget name="date" position="1099,430" size="120,30" font="Regular; 24" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="list" position="70,110" size="1150,310" itemHeight="28" zPosition="25" CoolFont="Regular;22" CoolServiceFont="Regular;22" CoolEventFont="Regular;22" CoolServiceSize="230" CoolEventSize="550" CoolServicePos="5" CoolServiceHPos="2" CoolEventPos="410" CoolEventHPos="2" CoolBarPos="230" CoolBarHPos="5" CoolBarSize="150" CoolBarHigh="18" CoolTimePos="230" CoolTimeHPos="2" CoolTimeSize="170" CoolDurationPos="990" CoolDurationSize="150" CoolDurationColor="blue" CoolServiceColor="titletext" CoolBarColor="grey" CoolEventColor="white" CoolCurrentCol="labeltext" CoolBackColorSel="background" CoolRecColor="red" CoolTunerCol="#606060" selectionPixmap="AtileHD/extensions/cursor.png" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,460" size="1150,150" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget source="Event" render="Label" position="120,430" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="220,430" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format: - %H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="330,430" size="550,30" font="Regular; 24" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Service" render="CoolPico" position="70,430" zPosition="1" size="50,28" alphatest="on" />
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolEasyGuide3" position="0,0" size="1280,720" title="Cool Easy Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool Easy Guide 3" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget name="date" position="1000,595" size="220,30" font="Regular; 24" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="list" position="70,110" size="1150,395" itemHeight="28" zPosition="25" CoolFont="Regular;22" CoolServiceFont="Regular;22" CoolEventFont="Regular;22" CoolServiceSize="230" CoolEventSize="550" CoolServicePos="5" CoolServiceHPos="2" CoolEventPos="410" CoolEventHPos="2" CoolBarPos="230" CoolBarHPos="5" CoolBarSize="150" CoolBarHigh="18" CoolTimePos="230" CoolTimeHPos="2" CoolTimeSize="170" CoolDurationPos="990" CoolDurationSize="150" CoolDurationColor="blue" CoolServiceColor="titletext" CoolBarColor="grey" CoolEventColor="white" CoolCurrentCol="labeltext" CoolBackColorSel="background" CoolRecColor="red" CoolTunerCol="#606060" selectionPixmap="AtileHD/extensions/cursor.png" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,510" size="1150,70" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget source="Event" render="Label" position="120,585" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="220,585" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format: - %H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="330,585" size="550,30" font="Regular; 24" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Service" render="CoolPico" position="70,585" zPosition="1" size="50,28" alphatest="on" />
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolSearch" position="0,0" size="1280,720" title="Cool Easy Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool Search" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="Service" render="CoolPico" position="70,105" zPosition="1" size="50,28" alphatest="on" />
+		<widget source="Event" render="Label" position="150,105" size="610,30" font="Regular; 24" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,140" size="820,160" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget name="date" position="770,105" size="120,30" font="Regular; 24" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="list" position="70,310" size="1150,300" itemHeight="28" zPosition="3" CoolFont="Regular;22" CoolServiceFont="Regular;22" CoolEventFont="Regular;22" CoolDayPos="0" CoolDayHPos="0" CoolDatePos="70" CoolDateHPos="2" CoolTimePos="150" CoolTimeHPos="2" CoolServicePos="230" CoolServiceHPos="2" CoolEventPos="520" CoolEventHPos="2" CoolDaySize="50" CoolDateSize="70" CoolTimeSize="70" CoolServiceSize="280" CoolEventSize="700" selectionPixmap="AtileHD/extensions/cursor.png" CoolServiceColor="titletext" CoolEventColor="white" CoolDateColor="white" CoolTimeColor="white" CoolDayColor="titletext" CoolRecColor="red" foregroundColor="foreground" backgroundColor="dark" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolTinyGuide" position="0,0" size="1280,720" title="Cool Tiny Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool Tiny Guide" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Service" render="CoolPico" position="70,585" zPosition="1" size="50,30" alphatest="on" />
+		<widget name="date" position="1050,120" size="180,30" font="Regular; 20" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="timeline_text" position="0,120" size="1150,30" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget name="list" position="70,150" size="1150,360" foregroundColor="foreground" backgroundColor="dark" scrollbarMode="showNever" transparent="1" />
+		<widget name="timeline0" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline1" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline2" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline3" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline4" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline5" position="0,150" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline_now" position="0,150" zPosition="2" size="19,360" pixmap="AtileHD/extensions/timelineCooltv.png" alphatest="on" />
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,510" size="1150,70" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget source="Event" render="Label" position="120,585" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="220,585" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format: - %H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="330,585" size="550,30" font="Regular; 24" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolNiceGuide" position="0,0" size="1280,720" title="Cool Nice Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="915,100" size="315,180" zPosition="-10" backgroundColor="tile_menu3" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.Event_Now" render="Progress" position="925,115" size="10,160" zPosition="1" transparent="1" orientation="orBottomToTop">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<eLabel text="Cool Nice Guide" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Service" render="CoolPico" position="70,105" zPosition="1" size="50,28" alphatest="on" />
+		<widget source="Event" render="Label" position="120,105" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="220,105" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format: - %H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="330,105" size="530,30" font="Regular; 24" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,140" size="790,142" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget name="date" position="1050,280" size="180,30" font="Regular; 20" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="timeline_text" position="0,280" size="1150,30" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget name="list" position="71,310" size="1150,300" foregroundColor="foreground" backgroundColor="dark" CoolBorderColR="#000000" CoolBorderColL="#000000" scrollbarMode="showNever" transparent="1" />
+		<widget name="timeline0" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline1" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline2" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline3" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline4" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline5" position="0,310" zPosition="1" size="0,0" pixmap="AtileHD/extensions/timeline.png" />
+		<widget name="timeline_now" position="0,310" zPosition="2" size="19,300" pixmap="AtileHD/extensions/timelineCooltv.png" alphatest="on" />
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolUniGuide" position="0,0" size="1280,720" title="Cool Uni Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool Uni Guide" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget name="date" position="1099,595" size="120,30" font="Regular; 24" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="list" position="70,110" size="1150,395" itemHeight="28" zPosition="25" CoolFont="Regular;22" CoolServiceFont="Regular;22" CoolEventFont="Regular;22" CoolServiceSize="230" CoolEventSize="550" CoolServicePos="5" CoolServiceHPos="2" CoolEventPos="410" CoolEventHPos="2" CoolBarPos="230" CoolBarHPos="5" CoolBarSize="150" CoolBarHigh="18" CoolTimePos="230" CoolTimeHPos="2" CoolTimeSize="150" CoolDurationPos="990" CoolDurationSize="150" CoolServiceColor="titletext" CoolBarColor="grey" CoolEventColor="white" CoolCurrentCol="green" CoolBackColorSel="white" CoolRecColor="red" CoolTunerCol="#606060" selectionPixmap="AtileHD/extensions/cursor.png" foregroundColor="foreground" backgroundColor="dark" transparent="1" />
+		<widget source="Title" render="Label" position="500,675" size="300,30" zPosition="3" font="Regular;20" foregroundColor="titletext" backgroundColor="background" halign="center" transparent="1" />
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,510" size="1150,70" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget source="Event" render="Label" position="120,585" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="220,585" size="100,30" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format: - %H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="330,585" size="550,30" font="Regular; 24" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Service" render="CoolPico" position="70,585" zPosition="1" size="50,28" alphatest="on" />
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolChannelGuide" position="0,0" size="1280,720" title="Cool Channel Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="915,100" size="315,190" zPosition="-10" backgroundColor="tile_menu3" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.Event_Now" render="Progress" position="925,115" size="10,160" zPosition="1" transparent="1" orientation="orBottomToTop">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Progress" position="925,110" size="10,160" zPosition="1" transparent="1" orientation="orBottomToTop">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<eLabel text="Cool Channel Guide" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget name="date" position="600,110" size="180,30" font="Regular; 22" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1" />
+		<widget source="Service" render="CoolPico" position="600,150" zPosition="1" size="100,60" alphatest="on" />
+		<widget source="Event" render="Label" position="600,240" size="100,30" font="Regular;22" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<eLabel text="-" position="600,270" size="50,30" font="Regular;22" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="center" />
+		<widget source="Event" render="Label" position="600,300" size="100,30" font="Regular;22" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format:%H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="600,385" size="630,30" font="Regular;22" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="600,420" size="630,195" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget name="list" position="70,110" size="490,420" itemHeight="60" zPosition="5" CoolPico="35" CoolFont="Regular;22" CoolServiceFont="Regular;22" CoolEventFont="Regular;18" CoolServiceSize="305" CoolEventSize="478" CoolServicePos="0" CoolServiceHPos="4" CoolEventPos="0" CoolEventHPos="32" CoolBarPos="320" CoolBarHPos="14" CoolBarSize="100" CoolBarHigh="10" CoolTimePos="350" CoolTimeHPos="9" CoolTimeSize="150" CoolDurationPos="370" CoolDurationSize="100" CoolDurationColor="blue" CoolServiceColor="white" CoolBarColor="white" CoolEventColor="white" CoolBackColorSel="background" CoolRecColor="red" CoolTunerCol="#606060" CoolCurrentCol="labeltext" selectionPixmap="AtileHD/extensions/cursor2.png" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Service" render="CoolNextEvent" position="70,525" size="490,90" font="Regular;18" foregroundColor="foreground" backgroundColor="background" transparent="1">
+		</widget>
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolChannelGuide2" position="0,0" size="1280,720" title="Cool Channel Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="55,100" size="305,180" zPosition="-10" backgroundColor="tile_menu_pig" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool Channel Guide 2" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.VideoPicture" render="Pig" position="65,110" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="Event" render="Label" position="65,315" size="80,30" font="Regular;22" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="440,315" size="80,30" font="Regular;22" foregroundColor="foreground" backgroundColor="background" halign="left" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format:%H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="60,345" size="485,28" font="Regular;22" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="center">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="60,375" size="485,140" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget name="list" position="545,110" size="680,500" itemHeight="28" zPosition="25" CoolPico="28" CoolPicoHPos="1" CoolFont="Regular;22" CoolServiceFont="Regular;21" CoolEventFont="Regular;18" CoolServicePos="1" CoolServiceSize="180" CoolServiceHPos="1" CoolEventPos="190" CoolEventSize="320" CoolEventHPos="3" CoolMarkerPicPos="2" CoolMarkerPicHPos="2" CoolMarkerPos="140" CoolMarkerHPos="1" CoolBar="0" CoolTime="1" CoolTimePos="540" CoolTimeHPos="3" CoolTimeSize="170" CoolDurationPos="630" CoolDurationSize="50" CoolDurationColor="blue" CoolServiceColor="white" CoolBarColor="blue" CoolEventColor="white" CoolBackColorSel="background" CoolRecColor="red" CoolTunerCol="#606060" CoolCurrentCol="labeltext" selectionPixmap="AtileHD/extensions/cursor.png" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Service" render="CoolNextEvent" position="60,520" size="485,90" font="Regular;18" foregroundColor="foreground" backgroundColor="background" transparent="1">
+		</widget>
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="CoolChannelGuide3" position="0,0" size="1280,720" title="Cool Channel Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Cool Channel Guide 3" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Event" render="Label" position="680,505" size="80,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" halign="right" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText" />
+		</widget>
+		<widget source="Event" render="Label" position="1130,505" size="80,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format:%H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="70,505" size="600,30" font="Regular;23" foregroundColor="labeltext" backgroundColor="background" transparent="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,always=0,startdelay=10000,wrap" position="70,536" size="1150,75" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<eLabel text="Next Event:" position="70,105" size="140,25" font="Regular;22" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget source="Service" render="CoolNextEvent" position="210,105" size="1000,45" font="Regular;18" foregroundColor="foreground" backgroundColor="background" transparent="1">
+		</widget>
+		<widget name="list" position="70,140" size="1150,360" itemHeight="28" zPosition="25" CoolPico="28" CoolPicoHPos="1" CoolFont="Regular;22" CoolServiceFont="Regular;21" CoolEventFont="Regular;18" CoolServiceSize="320" CoolEventSize="570" CoolServicePos="1" CoolServiceHPos="1" CoolEventPos="330" CoolEventHPos="3" CoolMarkerPicPos="2" CoolMarkerPicHPos="1" CoolMarkerHPos="1" CoolMarkerPos="350" CoolBarPos="900" CoolBarHPos="8" CoolBarSize="150" CoolBarHigh="10" CoolTimePos="900" CoolTimeHPos="3" CoolTimeSize="150" CoolDurationPos="1050" CoolDurationSize="100" CoolDurationColor="blue" CoolServiceColor="white" CoolBarColor="blue" CoolEventColor="white" CoolBackColorSel="background" CoolRecColor="red" CoolTunerCol="#606060" CoolCurrentCol="labeltext" selectionPixmap="AtileHD/extensions/cursor.png" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Title" render="Label" position="500,55" size="300,30" zPosition="3" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" halign="center" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+</skin>

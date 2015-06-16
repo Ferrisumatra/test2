@@ -1,0 +1,99 @@
+<skin>
+	<colors>
+		<color name="background" value="#180e1328" />
+		<color name="backtop" value="#004e4e4e" />
+		<color name="black" value="#00000000" />
+		<color name="blue" value="#000064c7" />
+		<color name="dark" value="#00323232" />
+		<color name="darkgrey" value="#00606060" />
+		<color name="diffline" value="#00ffffff" />
+		<color name="foreground" value="#00ffffff" />
+		<color name="green" value="#00389416" />
+		<color name="grey" value="#00bbbbbb" />
+		<color name="labeltext" value="#00e6dd2b" />
+		<color name="labeltext2" value="#00bbbbbb" />
+		<color name="orange" value="#00d74f2a" />
+		<color name="picture" value="#ff000000" />
+		<color name="progressbar_color" value="#00ffffff" />
+		<color name="red" value="#00ff4a3c" />
+		<color name="selectedBG" value="#08404549" />
+		<color name="selectedFG" value="#00e6dd2b" />
+		<color name="selectedScrollBG" value="#08404549" />
+		<color name="selectedScrollFG" value="#00e6dd2b" />
+		<color name="shadow" value="#20101010" />
+		<color name="slider" value="#00ff0000" />
+		<color name="slider_col_1" value="#200064c7" />
+		<color name="slider_col_2" value="#200064c7" />
+		<color name="slider_col_3" value="#20212c5d" />
+		<color name="slider_col_4" value="#30ffffff" />
+		<color name="subtitle" value="#00dcdcdc" />
+		<color name="tile_back" value="#20000000" />
+		<color name="tile_blue" value="#200064c7" />
+		<color name="tile_blue_big" value="#20000000" />
+		<color name="tile_channel" value="#180e1328" />
+		<color name="tile_clock0" value="#180e1328" />
+		<color name="tile_clock1" value="#180e1328" />
+		<color name="tile_epg0" value="#180e1328" />
+		<color name="tile_epg1" value="#180e1328" />
+		<color name="tile_epg2" value="#180e1328" />
+		<color name="tile_green" value="#20389416" />
+		<color name="tile_green_big" value="#20000000" />
+		<color name="tile_info0" value="#180e1328" />
+		<color name="tile_info1" value="#180e1328" />
+		<color name="tile_info2" value="#180e1328" />
+		<color name="tile_menu0" value="#180e1328" />
+		<color name="tile_menu1" value="#180e1328" />
+		<color name="tile_menu2" value="#180e1328" />
+		<color name="tile_menu3" value="#180e1328" />
+		<color name="tile_menu4" value="#180e1328" />
+		<color name="tile_menu5" value="#180e1328" />
+		<color name="tile_menu_pig" value="#000e1328" />
+		<color name="tile_orange" value="#20d74f2a" />
+		<color name="tile_picon" value="#180e1328" />
+		<color name="tile_prog" value="#180e1328" />
+		<color name="tile_rec" value="#180e1328" />
+		<color name="tile_red" value="#20f23d21" />
+		<color name="tile_red_big" value="#20000000" />
+		<color name="tile_yellow" value="#20e6dd2b" />
+		<color name="tile_yellow_big" value="#20000000" />
+		<color name="titletext" value="#00ffffff" />
+		<color name="transparent" value="#ffffffff" />
+		<color name="transpBlack" value="#80000000" />
+		<color name="transpWhite" value="#77ffffff" />
+		<color name="transpyellow" value="#20e6dd2b" />
+		<color name="white" value="#00ffffff" />
+		<color name="yellow" value="#00e6dd2b" />
+	</colors>
+	<windowstyle type="skinned" id="0">
+		<title offset="15,8" font="Regular;24" />
+		<color name="Background" color="tile_menu0" />
+		<color name="LabelForeground" color="slider_col_4" />
+		<color name="ListboxBackground" color="tile_menu0" />
+		<color name="ListboxForeground" color="foreground" />
+		<color name="ListboxSelectedBackground" color="selectedBG" />
+		<color name="ListboxSelectedForeground" color="selectedFG" />
+		<color name="ListboxMarkedBackground" color="selectedBG" />
+		<color name="ListboxMarkedForeground" color="yellow" />
+		<color name="ListboxMarkedAndSelectedBackground" color="blue" />
+		<color name="ListboxMarkedAndSelectedForeground" color="yellow" />
+		<color name="WindowTitleForeground" color="white" />
+		<color name="WindowTitleBackground" color="blue" />
+		<borderset name="bsWindow">
+			<pixmap pos="bpTop" filename="AtileHD/menu/titel_black.png" />
+		</borderset>
+	</windowstyle>
+	<windowstyle type="skinned" id="1">
+		<color name="Background" color="black" />
+		<color name="LabelForeground" color="white" />
+		<color name="ListboxBackground" color="black" />
+		<color name="ListboxForeground" color="white" />
+		<color name="ListboxSelectedBackground" color="black" />
+		<color name="ListboxSelectedForeground" color="white" />
+		<color name="ListboxMarkedBackground" color="black" />
+		<color name="ListboxMarkedForeground" color="white" />
+		<color name="ListboxMarkedAndSelectedBackground" color="black" />
+		<color name="ListboxMarkedAndSelectedForeground" color="white" />
+		<color name="WindowTitleForeground" color="white" />
+		<color name="WindowTitleBackground" color="black" />
+	</windowstyle>
+</skin>

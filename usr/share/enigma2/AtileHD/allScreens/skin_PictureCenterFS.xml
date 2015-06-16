@@ -1,0 +1,116 @@
+<skin>
+  <!-- PictureCenterFS 3.x -->
+  <screen name="PictureCenterFS" position="0,0" size="1280,720" title="PictureCenterFS" flags="wfNoBorder">
+    <eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+    <eLabel position=" 55,100" size="725,515" zPosition="-10" backgroundColor="tile_menu0" />
+    <eLabel position="785,355" size="445,260" zPosition="-10" backgroundColor="tile_menu1" />
+    <eLabel position="785,100" size="445,250" zPosition="-10" backgroundColor="tile_menu2" />
+    <eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+    <eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+    <eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+    <eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+    <eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+    <eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+    <eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+    <eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+    <widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+    <widget name="pc_list" position="70,115" size="700,490" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" />
+    <widget name="thumb" position="785,100" zPosition="5" size="445,250" alphatest="blend" transparent="0" />
+    <widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+    <widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+    <widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+    <widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+    <widget name="key_ok" position="880,430" zPosition="1" size="270,25" font="Regular;20" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+    <widget name="key_0" position="880,385" zPosition="1" size="270,25" font="Regular;20" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+    <widget name="button_help" pixmap="AtileHD/buttons/key_help.png" position="850,520" size="25,25" zPosition="1" alphatest="blend" />
+    <widget name="button_menu" pixmap="AtileHD/buttons/key_menu.png" position="850,475" size="25,25" zPosition="1" alphatest="blend" />
+    <widget name="button_epg" pixmap="AtileHD/buttons/key_epg.png" position="850,565" size="25,25" zPosition="1" alphatest="blend" />
+    <widget name="button_ok" pixmap="AtileHD/buttons/key_ok.png" position="850,430" size="25,25" zPosition="1" alphatest="blend" />
+    <widget name="button_0" pixmap="AtileHD/buttons/key_0.png" position="850,385" size="25,25" zPosition="1" alphatest="blend" />
+  </screen>
+  <screen name="PictureCenterFS_Edit" position="0,0" size="1280,720" title="PictureCenterFS" flags="wfNoBorder">
+    <eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+    <eLabel position=" 55,100" size="725,515" zPosition="-10" backgroundColor="tile_menu0" />
+    <eLabel position="785,295" size="445,320" zPosition="-10" backgroundColor="tile_menu1" />
+    <eLabel position="785,100" size="135,190" zPosition="-10" backgroundColor="tile_menu2" />
+    <eLabel position="925,100" size="305,190" zPosition="-10" backgroundColor="tile_menu_pig" />
+    <eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+    <eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+    <eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+    <eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+    <eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+    <eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+    <eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+    <eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+    <widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+      <convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+    <widget name="balken" position="70,570" zPosition="-1" size="700,35" backgroundColor="background" transparent="1" foregroundColor="labeltext" />
+    <widget name="config" position="70,115" size="700,450" zPosition="1" transparent="1" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" />
+    <widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+    <widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+    <widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+    <widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+  </screen>
+  <screen name="PictureCenterFS_Setup" position="0,0" size="1280,720" title="PictureCenterFS" flags="wfNoBorder">
+    <eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+    <eLabel position=" 55,100" size="725,515" zPosition="-10" backgroundColor="tile_menu0" />
+    <eLabel position="785,295" size="445,320" zPosition="-10" backgroundColor="tile_menu1" />
+    <eLabel position="785,100" size="135,190" zPosition="-10" backgroundColor="tile_menu2" />
+    <eLabel position="925,100" size="305,190" zPosition="-10" backgroundColor="tile_menu_pig" />
+    <eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+    <eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+    <eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+    <eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+    <eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+    <eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+    <eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+    <eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+    <widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+      <convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+    <widget name="balken" position="70,570" zPosition="-1" size="700,35" backgroundColor="background" transparent="1" foregroundColor="labeltext" />
+    <widget name="config" position="70,115" size="700,450" zPosition="1" transparent="1" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" />
+    <widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+    <widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+    <widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+    <widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+  </screen>
+  <screen name="PictureCenterFS_Filemenue" position="0,0" size="1280,720" title="PictureCenterFS" flags="wfNoBorder">
+    <eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+    <eLabel position=" 55,100" size="725,515" zPosition="-10" backgroundColor="tile_menu0" />
+    <eLabel position="785,295" size="445,320" zPosition="-10" backgroundColor="tile_menu1" />
+    <eLabel position="785,100" size="135,190" zPosition="-10" backgroundColor="tile_menu2" />
+    <eLabel position="925,100" size="305,190" zPosition="-10" backgroundColor="tile_menu_pig" />
+    <eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+    <eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+    <eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+    <eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+    <eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+    <eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+    <eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+    <eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+    <widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+      <convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+    <widget name="list" position="70,115" size="700,490" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" />
+  </screen>
+</skin>

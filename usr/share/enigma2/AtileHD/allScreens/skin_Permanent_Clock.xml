@@ -1,0 +1,8 @@
+<skin>
+ <!-- PermanentClock -->
+	<screen name="PermanentClockScreen" position="0,0" size="150,60" zPosition="10" transparent="0" backgroundColor="transparent" title=" " flags="wfNoBorder">
+		<widget source="global.CurrentTime" render="Label" position="0,0" size="150,60" font="Regular;50" valign="center" halign="center" foregroundColor="white" backgroundColor="transparent" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+	</screen>
+</skin>

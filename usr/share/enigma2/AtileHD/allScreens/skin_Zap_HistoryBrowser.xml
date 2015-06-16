@@ -1,0 +1,16 @@
+<skin>
+  <!-- Zap-History Browser -->
+  <screen name="ZapHistoryBrowser" position="0,0" size="1280,720" title="Zap-History Browser" backgroundColor="transparent" flags="wfNoBorder">
+    <eLabel position=" 55,40" size="370,550" zPosition="-10" backgroundColor="transpBlack" />
+    <widget source="Title" render="Label" position="55,650" size="370,35" font="Regular;30" halign="center" foregroundColor="titletext" backgroundColor="transparent" transparent="1" />
+    <widget name="list" position="60,45" size="360,540" itemHeight="45" transparent="1" scrollbarMode="showNever" />
+    <ePixmap pixmap="AtileHD/buttons/key_red.png" position="55,595" size="30,30" alphatest="blend" />
+    <ePixmap pixmap="AtileHD/buttons/key_green.png" position="55,625" size="30,30" alphatest="blend" />
+    <ePixmap pixmap="AtileHD/buttons/key_yellow.png" position="210,595" size="30,30" alphatest="blend" />
+    <ePixmap pixmap="AtileHD/buttons/key_blue.png" position="210,625" size="30,30" alphatest="blend" />
+    <widget name="key_red" position="85,596" size="100,25" font="Regular; 20" zPosition="2" valign="top" halign="left" backgroundColor="transparent" transparent="1" />
+    <widget name="key_green" position="85,626" size="100,25" font="Regular; 20" zPosition="2" valign="top" halign="left" backgroundColor="transparent" transparent="1" />
+    <widget name="key_yellow" position="240,596" size="180,25" font="Regular; 20" zPosition="2" valign="top" halign="left" backgroundColor="transparent" transparent="1" />
+    <widget name="key_blue" position="240,626" size="180,25" font="Regular; 20" zPosition="2" valign="top" halign="left" backgroundColor="transparent" transparent="1" />
+  </screen>
+</skin>

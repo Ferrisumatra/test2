@@ -1,0 +1,276 @@
+<?xml version="1.0"  encoding="UTF-8" ?>
+<!-- List of NTP servers on different countries -->
+<xml>
+	<contenant cont="Africa">
+		<country name="Angola">
+		  <ntp>ao.pool.ntp.org</ntp>
+		</country>
+
+		<country name="Madagascar">
+		  <ntp>mg.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="South Africa">
+		  <ntp>za.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Tanzania">
+		  <ntp>tz.pool.ntp.org</ntp>
+		</country>
+	</contenant>
+  
+	<contenant cont="Asia">
+		<country name="Bangladesh">
+		  <ntp>bd.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="China">
+		  <ntp>cn.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Hong Kong">
+		  <ntp>hk.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="India">
+		  <ntp>in.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Indonesia">
+		  <ntp>id.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Iran">
+		  <ntp>ir.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Japan">
+		  <ntp>jp.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Korea">
+		  <ntp>kr.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Malaysia">
+		  <ntp>my.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Pakistan">
+		  <ntp>pk.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Philippines">
+		  <ntp>ph.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Singapore">
+		  <ntp>sg.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Taiwan">
+		  <ntp>tw.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Thailand">
+		  <ntp>th.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Turkey">
+		  <ntp>tr.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="United Arab Emirates">
+		  <ntp>ae.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Vietnam">
+		  <ntp>vn.pool.ntp.org</ntp>
+		</country>
+	</contenant>
+
+	<contenant cont="Europe">
+		<country name="Austria">
+		  <ntp>at.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Belarus">
+		  <ntp>by.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Belgium">
+		  <ntp>be.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Bulgaria">
+		  <ntp>bg.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Czech Republic">
+		  <ntp>cz.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Denmark">
+		  <ntp>dk.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Estonia">
+		  <ntp>es.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Finland">
+		  <ntp>fi.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="France">
+		  <ntp>fr.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Germany">
+		  <ntp>de.pool.ntp.org</ntp>
+		  <ntp>ntp0.fau.de</ntp>
+		</country>
+    
+		<country name="Greece">
+		  <ntp>gr.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Hungary">
+		  <ntp>hu.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Ireland">
+		  <ntp>ie.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Italy">
+		  <ntp>it.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Latvia">
+		  <ntp>lv.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Lithuania">
+		  <ntp>lt.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Luxembourg">
+		  <ntp>lu.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Macedonia">
+		  <ntp>mk.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Moldova">
+		  <ntp>md.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Netherlands">
+		  <ntp>nl.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Norway">
+		  <ntp>no.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Poland">
+		  <ntp>pl.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Portugal">
+		  <ntp>pt.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Romania">
+		  <ntp>ro.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Russian Federation">
+		  <ntp>ru.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Slovakia">
+		  <ntp>sk.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Slovenia">
+		  <ntp>si.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Spain">
+		  <ntp>es.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Sweden">
+		  <ntp>se.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Switzerland">
+		  <ntp>ch.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Ukraine">
+		  <ntp>ua.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="United Kingdom">
+		  <ntp>uk.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Yugoslavia">
+		  <ntp>yu.pool.ntp.org</ntp>
+		</country>
+	</contenant>
+
+	<contenant cont="North America">
+		<country name="Bahamas">
+		  <ntp>bs.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Canada">
+		  <ntp>ca.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Guatemala">
+		  <ntp>gt.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Mexico">
+		  <ntp>mx.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Panama">
+		  <ntp>pa.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="United States">
+		  <ntp>us.pool.ntp.org</ntp>
+		</country>
+	</contenant>
+
+	<contenant cont="Oceania">
+		<country name="Australia">
+		  <ntp>au.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="New Zealand">
+		  <ntp>nz.pool.ntp.org</ntp>
+		</country>
+	</contenant>
+
+	<contenant cont="South America">
+		<country name="Argentina">
+		  <ntp>ar.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Brazil">
+		  <ntp>br.pool.ntp.org</ntp>
+		</country>
+    
+		<country name="Chile">
+		  <ntp>cl.pool.ntp.org</ntp>
+		</country>
+	</contenant>
+</xml>

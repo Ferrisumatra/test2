@@ -1,0 +1,29 @@
+<skin>
+	<!-- LCD4linux Settings-->
+	<screen name="LCDdisplayConfig" position="0,0" size="1280,720" title="LCD4linux Settings" backgroundColor="transparent" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position="55,10" size="1175,605" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="config" position="70,90" size="600,450" itemHeight="30" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" enableWrapAround="1" backgroundColor="background" transparent="1" />
+		<widget source="introduction" render="Label" position="70,545" size="600,40" font="Regular;20" halign="center" valign="center" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget source="Version" render="Label" position="70,590" size="200,20" zPosition="1" font="Regular;16" halign="left" valign="center" backgroundColor="background" transparent="1" />
+		<widget source="LibUSB" render="Label" position="270,590" size="200,20" zPosition="1" font="Regular;16" halign="center" valign="center" foregroundColor="red" backgroundColor="background" transparent="1" />
+		<widget source="About" render="Label" position="470,590" size="200,20" zPosition="1" font="Regular;16" halign="right" valign="center" backgroundColor="background" transparent="1" />
+		<widget name="LCD1" position="670,10" zPosition="1" size="550,320" transparent="1" alphatest="on" />
+		<widget name="LCD2" position="670,310" zPosition="1" size="550,320" transparent="1" alphatest="on" />
+		<widget source="LCD1text" render="Label" position="800,200" size="300,20" zPosition="1" font="Regular;16" halign="center" valign="center" backgroundColor="background" transparent="1" />
+		<widget source="LCD2text" render="Label" position="800,450" size="300,20" zPosition="1" font="Regular;16" halign="center" valign="center" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" backgroundColor="background" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" backgroundColor="background" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" backgroundColor="background" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" backgroundColor="background" transparent="1" />
+	</screen>
+</skin>

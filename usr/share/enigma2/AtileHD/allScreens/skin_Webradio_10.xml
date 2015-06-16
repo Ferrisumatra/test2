@@ -1,0 +1,306 @@
+<skin>
+	<!-- WebRadioFS 10.x -->
+	<!-- webradioFS.xml Screens --> 
+	<screen name="WebradioFSScreen_10" position="0,0" size="1280,720" title="WebradioFS" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="foreground" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="rec_pic" position="70,120" pixmap="AtileHD/buttons/key_red.png" size="25,25" zPosition="2" backgroundColor="background" alphatest="blend" />
+		<widget name="rec_txt" position="70,110" size="700,35" font="Regular;22" halign="center" valign="center" zPosition="2" backgroundColor="background" transparent="1" />
+		<widget name="rec_txt2" position="70,110" size="760,35" font="Regular;22" halign="center" valign="center" foregroundColor="labeltext" zPosition="3" backgroundColor="background" transparent="1" />
+		<widget name="streamlist" zPosition="2" position="70,145" size="760,390" foregroundColor="foreground" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" enableWrapAround="1" />
+		<widget name="help" zPosition="3" position="70,105" size="760,420" foregroundColor="foreground" backgroundColor="background" font="Regular;18" transparent="1" />
+		<widget name="info" zPosition="3" position="70,105" size="760,420" foregroundColor="foreground" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" />
+		<widget name="playtext" position="70,540" zPosition="2" size="1060,60" font="Regular;20" valign="center" halign="center" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="titel_fav" position="895,210" zPosition="3" size="67,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="fav" position="965,210" zPosition="3" size="260,20" font="Regular;18" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="streamlogo" position="910,120" zPosition="2" size="240,75" alphatest="blend" transparent="1" />
+		<widget name="stream_name" position="910,120" zPosition="2" size="240,75" font="Regular;22" halign="center" valign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="picture" pixmap="AtileHD/icons/webradioFS.png" position="995,365" zPosition="2" size="140,140" alphatest="blend" />
+		<eLabel text="Bitrate:" position="895,235" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_bitrate" position="966,235" zPosition="1" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Genre:" position="895,285" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_genres" position="966,285" zPosition="0" size="175,45" font="Regular;20" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Typ:" position="895,260" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_typ" position="966,260" zPosition="0" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="skin_uploader" position="0,11" zPosition="0" size="0,0" font="Regular;20" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />
+		<widget name="skin_beschreibung" position="0,110" zPosition="0" size="0,0" font="Regular;20" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />
+		<widget name="skin_zuverlaessig" position="0,110" zPosition="0" size="0,0" font="Regular;20" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue" transparent="1" />
+		<widget name="buttons_abdeck" position="645,620" size="585,60" zPosition="5" font="Regular;20" backgroundColor="tile_back" />
+		<widget name="key_red2" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red" transparent="1" />
+		<widget name="key_green2" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green" transparent="1" />
+	</screen>
+	<screen name="genre_anzeige_10" position="0,0" size="1280,720" title="WebradioFS" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="foreground" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="rec_pic" position="70,120" pixmap="AtileHD/buttons/key_red.png" size="25,25" zPosition="2" backgroundColor="background" alphatest="blend" />
+		<widget name="rec_txt" position="70,110" size="700,35" font="Regular;22" halign="center" valign="center" zPosition="2" backgroundColor="background" transparent="1" />
+		<widget name="rec_txt2" position="70,110" size="760,35" font="Regular;22" halign="center" valign="center" foregroundColor="labeltext" zPosition="3" backgroundColor="background" transparent="1" />
+		<widget name="streamlist" zPosition="2" position="70,145" size="760,390" foregroundColor="foreground" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" enableWrapAround="1" />
+		<widget name="help" zPosition="3" position="70,105" size="760,420" foregroundColor="foreground" backgroundColor="background" font="Regular;18" transparent="1" />
+		<widget name="info" zPosition="3" position="70,105" size="760,420" foregroundColor="foreground" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" />
+		<widget name="playtext" position="70,540" zPosition="2" size="1060,60" font="Regular;20" valign="center" halign="center" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="titel_fav" position="895,210" zPosition="3" size="67,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="fav" position="965,210" zPosition="3" size="260,20" font="Regular;18" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="streamlogo" position="910,120" zPosition="2" size="240,75" alphatest="blend" transparent="1" />
+		<widget name="stream_name" position="910,120" zPosition="2" size="240,75" font="Regular;22" halign="center" valign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="picture" pixmap="AtileHD/icons/webradioFS.png" position="995,365" zPosition="2" size="140,140" alphatest="blend" />
+		<eLabel text="Bitrate:" position="895,235" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_bitrate" position="966,235" zPosition="1" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Genre:" position="895,285" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_genres" position="966,285" zPosition="0" size="175,45" font="Regular;20" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Typ:" position="895,260" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_typ" position="966,260" zPosition="0" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="skin_uploader" position="0,11" zPosition="0" size="0,0" font="Regular;20" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />
+		<widget name="skin_beschreibung" position="0,110" zPosition="0" size="0,0" font="Regular;20" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />
+		<widget name="skin_zuverlaessig" position="0,110" zPosition="0" size="0,0" font="Regular;20" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue" transparent="1" />
+		<widget name="buttons_abdeck" position="645,620" size="585,60" zPosition="5" font="Regular;20" backgroundColor="tile_back" />
+		<widget name="key_red2" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red" transparent="1" />
+		<widget name="key_green2" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green" transparent="1" />
+		</screen>
+	<screen name="menu_10" position="0,0" size="1280,720" title="WebradioFS" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="foreground" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="rec_pic" position="70,120" pixmap="AtileHD/buttons/key_red.png" size="25,25" zPosition="2" backgroundColor="background" alphatest="blend" />
+		<widget name="rec_txt" position="70,110" size="700,35" font="Regular;22" halign="center" valign="center" zPosition="2" backgroundColor="background" transparent="1" />
+		<widget name="rec_txt2" position="70,110" size="760,35" font="Regular;22" halign="center" valign="center" foregroundColor="labeltext" zPosition="3" backgroundColor="background" transparent="1" />
+		<widget name="streamlist" zPosition="2" position="70,145" size="760,390" foregroundColor="foreground" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" enableWrapAround="1" />
+		<widget name="help" zPosition="3" position="70,105" size="760,420" foregroundColor="foreground" backgroundColor="background" font="Regular;18" transparent="1" />
+		<widget name="info" zPosition="3" position="70,105" size="760,420" foregroundColor="foreground" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" />
+		<widget name="playtext" position="70,540" zPosition="2" size="1060,60" font="Regular;20" valign="center" halign="center" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="titel_fav" position="895,210" zPosition="3" size="67,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="fav" position="965,210" zPosition="3" size="260,20" font="Regular;18" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="streamlogo" position="910,120" zPosition="2" size="240,75" alphatest="blend" transparent="1" />
+		<widget name="stream_name" position="910,120" zPosition="2" size="240,75" font="Regular;22" halign="center" valign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="picture" pixmap="AtileHD/icons/webradioFS.png" position="995,365" zPosition="2" size="140,140" alphatest="blend" />
+		<eLabel text="Bitrate:" position="895,235" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_bitrate" position="966,235" zPosition="1" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Genre:" position="895,285" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_genres" position="966,285" zPosition="0" size="175,45" font="Regular;20" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Typ:" position="895,260" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_typ" position="966,260" zPosition="0" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="skin_uploader" position="0,11" zPosition="0" size="0,0" font="Regular;20" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />
+		<widget name="skin_beschreibung" position="0,110" zPosition="0" size="0,0" font="Regular;20" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />
+		<widget name="skin_zuverlaessig" position="0,110" zPosition="0" size="0,0" font="Regular;20" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue" transparent="1" />
+		<widget name="buttons_abdeck" position="645,620" size="585,60" zPosition="5" font="Regular;20" backgroundColor="tile_back" />
+		<widget name="key_red2" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red" transparent="1" />
+		<widget name="key_green2" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green" transparent="1" />
+	</screen>
+	<!-- wbrFS_setup.xml Screens -->
+	<screen name="WebradioFSSetup_10" position="0,0" size="1280,720" title="WebradioFS" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="foreground" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="config" position="70,160" zPosition="3" size="700,370" foregroundColor="foreground" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" enableWrapAround="1" />
+		<widget name="rec_txt" position="70,110" size="700,35" font="Regular;22" halign="center" valign="center" zPosition="2" backgroundColor="background" transparent="1" />
+		<widget name="playtext" position="70,540" zPosition="2" size="1060,60" font="Regular;20" valign="center" halign="center" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="titel_fav" position="895,210" zPosition="3" size="67,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="fav" position="965,210" zPosition="3" size="260,20" font="Regular;18" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="stream_name" position="910,120" zPosition="2" size="240,75" font="Regular;22" halign="center" valign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="picture" pixmap="AtileHD/icons/webradioFS.png" position="995,365" zPosition="2" size="140,140" alphatest="blend" />
+		<eLabel text="Bitrate:" position="895,235" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_bitrate" position="966,235" zPosition="1" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Genre:" position="895,285" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_genres" position="966,285" zPosition="0" size="175,45" font="Regular;20" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Typ:" position="895,260" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_typ" position="966,260" zPosition="0" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue" transparent="1" />
+	</screen>
+	<screen name="WebradioFS_FB_Setup_10" position="0,0" size="1280,720" title="WebradioFS" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="foreground" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="config" position="70,160" zPosition="3" size="700,370" foregroundColor="foreground" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" enableWrapAround="1" />
+		<widget name="rec_txt" position="70,110" size="700,35" font="Regular;22" halign="center" valign="center" zPosition="2" backgroundColor="background" transparent="1" />
+		<widget name="playtext" position="70,540" zPosition="2" size="1060,60" font="Regular;20" valign="center" halign="center" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="titel_fav" position="895,210" zPosition="3" size="67,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="fav" position="965,210" zPosition="3" size="260,20" font="Regular;18" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="stream_name" position="910,120" zPosition="2" size="240,75" font="Regular;22" halign="center" valign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="picture" pixmap="AtileHD/icons/webradioFS.png" position="995,365" zPosition="2" size="140,140" alphatest="blend" />
+		<eLabel text="Bitrate:" position="895,235" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_bitrate" position="966,235" zPosition="1" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Genre:" position="895,285" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_genres" position="966,285" zPosition="0" size="175,45" font="Regular;20" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Typ:" position="895,260" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_typ" position="966,260" zPosition="0" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue" transparent="1" />
+	</screen>
+	<screen name="rec_menu_10" position="0,0" size="1280,720" title="WebradioFS" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="foreground" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="config" position="70,160" zPosition="3" size="700,370" foregroundColor="foreground" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" enableWrapAround="1" />
+		<widget name="rec_txt" position="70,110" size="700,35" font="Regular;22" halign="center" valign="center" zPosition="2" backgroundColor="background" transparent="1" />
+		<widget name="playtext" position="70,540" zPosition="2" size="1060,60" font="Regular;20" valign="center" halign="center" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="titel_fav" position="895,210" zPosition="3" size="67,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="fav" position="965,210" zPosition="3" size="260,20" font="Regular;18" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="stream_name" position="910,120" zPosition="2" size="240,75" font="Regular;22" halign="center" valign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="picture" pixmap="AtileHD/icons/webradioFS.png" position="995,365" zPosition="2" size="140,140" alphatest="blend" />
+		<eLabel text="Bitrate:" position="895,235" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_bitrate" position="966,235" zPosition="1" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Genre:" position="895,285" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_genres" position="966,285" zPosition="0" size="175,45" font="Regular;20" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Typ:" position="895,260" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_typ" position="966,260" zPosition="0" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue" transparent="1" />
+	</screen>
+	<screen name="Fav_edit_10" position="0,0" size="1280,720" title="WebradioFS" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="1175,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="foreground" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="config" position="70,160" zPosition="3" size="700,370" foregroundColor="foreground" backgroundColor="background" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" enableWrapAround="1" />
+		<widget name="rec_txt" position="70,110" size="700,35" font="Regular;22" halign="center" valign="center" zPosition="2" backgroundColor="background" transparent="1" />
+		<widget name="playtext" position="70,540" zPosition="2" size="1060,60" font="Regular;20" valign="center" halign="center" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="titel_fav" position="895,210" zPosition="3" size="67,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="fav" position="965,210" zPosition="3" size="260,20" font="Regular;18" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="stream_name" position="910,120" zPosition="2" size="240,75" font="Regular;22" halign="center" valign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="picture" pixmap="AtileHD/icons/webradioFS.png" position="995,365" zPosition="2" size="140,140" alphatest="blend" />
+		<eLabel text="Bitrate:" position="895,235" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_bitrate" position="966,235" zPosition="1" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Genre:" position="895,285" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_genres" position="966,285" zPosition="0" size="175,45" font="Regular;20" valign="top" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<eLabel text="Typ:" position="895,260" zPosition="1" size="65,20" font="Regular;18" valign="top" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget name="skin_typ" position="966,260" zPosition="0" size="175,20" font="Regular;20" valign="center" halign="left" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue" transparent="1" />
+	</screen>
+	<!-- wbrFS_screensaver.xml Screens --> 
+	<screen name="wbrScreenSaver_10" position="0,0" size="1280,720" flags="wfNoBorder" backgroundColor="black" title="">
+		<widget name="background1" position="0,0" size="1280,720" zPosition="0" transparent="0" backgroundColor="black" />
+		<widget name="display_station" position="255,342" zPosition="1" size="400,30" font="Regular;26" halign="left" transparent="1" foregroundColor="tile_blue" />
+		<widget name="display_time" position="255,282" zPosition="1" size="400,60" font="Regular;26" halign="left" transparent="1" foregroundColor="tile_green" />
+		<widget name="display_nplaying" position="255,382" zPosition="1" size="400,90" font="Regular;26" halign="left" transparent="1" foregroundColor="tile_yellow" />
+		<widget name="cover" zPosition="2" size="200,200" position="50,282" alphatest="blend" />
+		<widget name="cover2" zPosition="2" size="400,400" position="0,282" alphatest="blend" />
+	</screen>
+	<screen name="wbrfs_col_10" position="0,0" size="1280,720" flags="wfNoBorder" backgroundColor="black" title="">
+		<widget name="background1" position="0,0" size="1280,720" zPosition="0" transparent="0" backgroundColor="black" />
+		<widget name="display_station" position="255,342" zPosition="1" size="400,30" font="Regular;26" halign="left" transparent="1" foregroundColor="tile_blue" />
+		<widget name="display_time" position="255,282" zPosition="1" size="400,60" font="Regular;26" halign="left" transparent="1" foregroundColor="tile_green" />
+		<widget name="display_nplaying" position="255,382" zPosition="1" size="400,90" font="Regular;26" halign="left" transparent="1" foregroundColor="tile_yellow" />
+		<widget name="cover" zPosition="2" size="200,200" position="50,282" alphatest="blend" />
+		<widget name="cover2" zPosition="2" size="400,400" position="0,282" alphatest="blend" />
+	</screen>
+	<screen name="col_set_10" position="0,0" size="1280,720" flags="wfNoBorder" backgroundColor="black" title="">
+		<widget name="background1" position="0,0" size="1280,720" zPosition="0" transparent="0" backgroundColor="black" />
+		<widget name="display_station" position="255,342" zPosition="1" size="400,30" font="Regular;26" halign="left" transparent="1" foregroundColor="tile_blue" />
+		<widget name="display_time" position="255,282" zPosition="1" size="400,60" font="Regular;26" halign="left" transparent="1" foregroundColor="tile_green" />
+		<widget name="display_nplaying" position="255,382" zPosition="1" size="400,90" font="Regular;26" halign="left" transparent="1" foregroundColor="tile_yellow" />
+		<widget name="cover" zPosition="2" size="200,200" position="50,282" alphatest="blend" />
+		<widget name="cover2" zPosition="2" size="400,400" position="0,282" alphatest="blend" />
+	</screen>
+
+	<screen name="wbrfs_message_box_screen" position="center,center" zPosition="10" size="600,200" backgroundColor="background" title="webradioFS-Info">
+		<ePixmap position="10,30" size="140,140" pixmap="AtileHD/icons/webradioFS.png" transparent="1" alphatest="on" />
+		<widget name="text" font="Regular;22" halign="left" position="160,10" size="430,140" transparent="1" zPosition="6" />
+		<widget name="list" position="2000,2000" size="500,50" zPosition="7" />
+	</screen>
+	<screen name="webradioFSdisplay10" position="0,0" size="132,64">
+		<widget name="Zeile1" position="4,0" size="256,14" font="Regular;12" noWrap="1" />
+		<widget name="Zeile2" position="4,20" size="256,22" font="Regular;20" noWrap="1" />
+		<widget name="Zeile3" position="4,49" size="256,14" font="Regular;12" noWrap="1" />
+		<widget name="picon" position="300,400" size="120,25" backgroundColor="black" alphatest="blend" />
+	</screen>
+</skin>

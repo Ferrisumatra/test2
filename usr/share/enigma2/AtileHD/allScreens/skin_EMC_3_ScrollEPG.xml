@@ -1,0 +1,258 @@
+<skin>
+	<!-- Enhanced Movie Center 3.7.x -->
+	<screen name="EMCMediaCenter" position="0,0" size="1280,720" title="Infobar" backgroundColor="transparent" flags="wfNoBorder">
+		<eLabel position="210,535" size="880,165" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position="1010,555" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="230,620" size="580,60" zPosition="-10" backgroundColor="tile_epg1" />
+		<eLabel position="815,620" size="60,60" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="880,555" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="815,555" size="60,60" zPosition="-10" backgroundColor="tile_menu2" />
+		<eLabel position="880,620" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="945,555" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="230,555" size="580,60" zPosition="-10" backgroundColor="tile_epg0" />
+		<eLabel position="945,620" size="125,60" zPosition="-10" backgroundColor="tile_clock0" />
+		<widget source="session.CurrentService" render="Label" position="880,620" size="60,25" font="Regular; 20" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ServiceInfo">VideoWidth</convert>
+		</widget>
+		<eLabel text="x" position="880,638" size="60,30" font="Regular; 16" halign="center" backgroundColor="background" transparent="1" />
+		<widget source="session.CurrentService" render="Label" position="880,655" size="60,25" font="Regular; 20" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" valign="center" zPosition="0">
+			<convert type="ServiceInfo">VideoHeight</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="235,555" size="570,30" font="Regular;26" valign="top" halign="left" noWrap="1" foregroundColor="titletext" backgroundColor="background" transparent="1" zPosition="5">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="945,620" size="125,30" font="Regular;22" valign="center" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EMCClockToText">Format:%H:%M</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="945,655" size="125,30" font="Regular; 18" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+		<!-- Event Slider und Gauge -->
+		<widget source="Service" render="Progress" foregroundColor="slider_col_1" position="230,555" size="580,60" zPosition="2" transparent="1">
+			<convert type="EMCServicePosition">Position</convert>
+		</widget>
+		<widget source="Service" render="Progress" foregroundColor="slider_col_2" position="230,555" size="580,60" zPosition="1" transparent="1">
+			<convert type="EMCRecordPosition">Position</convert>
+		</widget>
+		<widget source="Service" render="EMCPositionGauge" position="230,620" size="580,10" transparent="1" zPosition="0">
+			<convert type="EMCServicePosition">Gauge</convert>
+		</widget>
+		<widget source="Service" render="Label" position="235,620" size="100,30" font="Regular;22" valign="center" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="5">
+			<convert type="EMCServicePosition">Position,ShowHours</convert>
+		</widget>
+		<widget source="Service" render="Label" position="470,620" size="100,30" font="Regular;22" valign="center" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="5">
+			<convert type="EMCServicePosition">Length,ShowHours</convert>
+		</widget>
+		<widget source="Service" render="Label" position="705,620" size="100,30" font="Regular;22" valign="center" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="5">
+			<convert type="EMCServicePosition">Remaining,Negate,ShowHours</convert>
+		</widget>
+		<!-- Infobar Cover -->
+		<widget name="Cover" position="75,535" size="130,165" zPosition="1" alphatest="on" />
+		<!-- Service Info Start -->
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_dolby_on.png" position="1010,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsMultichannel</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_format_on.png" position="880,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsWidescreen</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_hd_on.png" position="945,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">VideoWidth</convert>
+			<convert type="ValueRange">721,1980</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" text="REC" position="815,620" size="60,60" zPosition="2" font="Regular; 24" valign="center" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" position="815,620" size="60,60" zPosition="3" valign="center" halign="center" text=" " backgroundColor="tile_rec">
+			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide">Blink</convert>
+		</widget>
+		<widget name="audioLabel" position="235,585" size="100,30" font="Regular;18" foregroundColor="foreground" backgroundColor="background" zPosition="5" transparent="1" />
+		<widget name="chapterLabel" position="235,650" size="570,30" font="Regular;22" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<!-- Subtitel Label only for DVD -->
+		<widget name="subtitleLabel" position="705,585" size="100,30" zPosition="5" halign="right" font="Regular;18" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+	</screen>
+	<screen name="EMCSelection" position="0,0" size="1280,720" title="Enhanced Movie Center" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="725,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="785,295" size="445,77" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="785,377" size="445,238" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="785,100" size="135,190" zPosition="-10" backgroundColor="tile_menu2" />
+		<eLabel position="925,100" size="305,190" zPosition="-10" backgroundColor="tile_menu_pig" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Enhanced Movie Center" position="70,47" size="950,43" font="Regular;35" backgroundColor="backtop" transparent="1" foregroundColor="titletext" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="Title" render="Label" position="470,60" size="550,30" font="Regular; 24" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="Cover" position="785,100" size="135,190" zPosition="4" backgroundColor="background" alphatest="blend" transparent="1" />
+		<widget name="list" position="70,115" size="700,480" itemHeight="30" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" CoolFont="Regular;20" CoolSelectFont="Regular;20" CoolDateFont="Regular;18" CoolMoviePos="35" CoolMovieSize="550" CoolFolderSize="550" CoolTitleColor="0" CoolDatePos="700" CoolDateWidth="170" CoolDateColor="0" CoolHighlightColor="0" CoolProgressPos="1000" CoolBarPos="590" CoolBarHPos="8" CoolBarSize="55,10" CoolBarSizeSa="110,16" DefaultColor="black" UnwatchedColor="white" WatchingColor="blue" FinishedColor="green" foregroundColorSelected="selectedFG" RecordingColor="red" BackColorSel="selectedBG" transparent="1" />
+		<widget name="wait" position="470,30" size="550,30" zPosition="1" font="Regular;24" foregroundColor="labeltext" backgroundColor="backtop" halign="center" valign="center" transparent="1" />
+		<widget source="Service" render="Label" position="1085,302" size="70,24" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EMCServiceTime">StartTime</convert>
+			<convert type="EMCClockToText">Format:%H:%M </convert>
+		</widget>
+		<widget source="Service" render="Label" position="1150,302" size="15,24" font="Regular;20" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EMCServiceTime">EndTime</convert>
+			<convert type="EMCClockToText">Format:- </convert>
+		</widget>
+		<widget source="Service" render="Label" position="1150,302" size="70,24" font="Regular;20" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="right">
+			<convert type="EMCServiceTime">EndTime</convert>
+			<convert type="EMCClockToText">Format:%H:%M </convert>
+		</widget>
+		<widget source="Service" render="Label" position="1050,345" size="100,24" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EMCServiceTime">Duration</convert>
+			<convert type="EMCClockToText">InMinutes</convert>
+		</widget>
+		<widget source="Service" render="Label" position="1100,345" size="120,24" font="Regular;20" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EMCMovieInfo">FileSize</convert>
+		</widget>
+		<!-- EMC Short Description(Genre) -->
+		<widget source="Service" render="Label" position="790,324" size="430,25" font="Regular; 20" zPosition="2" foregroundColor="labeltext" backgroundColor="background" transparent="1" halign="left">
+			<convert type="EMCMovieInfo">ShortDescription</convert>
+		</widget>
+		<widget source="Service" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,always=0,startdelay=5000,wrap" position="795,380" size="430,232" font="Regular; 22" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EMCEventName">ExtendedDescription</convert>
+		</widget>
+		<widget source="Service" render="Label" position="790,300" size="270,26" font="Regular; 24" halign="left" backgroundColor="background" transparent="1" foregroundColor="titletext">
+			<convert type="EMCMovieInfo">RecordServiceName</convert>
+		</widget>
+		<widget source="Service" render="Label" position="790,345" size="250,24" font="Regular; 20" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EMCServiceTime">StartTime</convert>
+			<convert type="EMCClockToText">Date</convert>
+		</widget>
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+	<screen name="EnhancedMovieCenterMenu" position="0,0" size="1280,720" title="EnhancedMovieCenterMenu">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="725,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="785,295" size="445,320" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="785,100" size="135,190" zPosition="-10" backgroundColor="tile_menu2" />
+		<eLabel position="925,100" size="305,190" zPosition="-10" backgroundColor="tile_menu_pig" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+		<widget name="config" position="70,115" size="700,400" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" />
+		<widget source="help" render="Label" position="70,520" size="700,90" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+	</screen>
+	<!-- EMC Cover Scan -->
+	<screen name="EMCImdbScan" position="0,0" size="1280,720" title="EMC Cover search" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="865,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="925,295" size="305,320" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="925,100" size="305,190" zPosition="-10" backgroundColor="tile_menu_pig" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="info" position="930,391" size="295,25" zPosition="0" font="Regular; 20" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="labeltext" />
+		<widget name="m_info" position="70,115" size="850,30" zPosition="0" font="Regular;24" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget name="menulist" position="70,155" size="840,415" itemHeight="25" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" enableWrapAround="on" />
+		<widget name="poster" position="1010,420" size="135,190" zPosition="4" alphatest="on" />
+		<widget name="download" position="930,360" size="295,25" zPosition="0" font="Regular;21" halign="center" valign="center" transparent="1" foregroundColor="foreground" backgroundColor="background" />
+		<widget name="exist" position="930,300" size="295,25" zPosition="0" font="Regular;21" halign="center" valign="center" transparent="1" foregroundColor="foreground" backgroundColor="background" />
+		<widget name="no_poster" position="930,330" size="295,25" zPosition="0" font="Regular;21" halign="center" valign="center" transparent="1" foregroundColor="foreground" backgroundColor="background" />
+		<widget name="done_msg" position="70,570" size="850,43" zPosition="0" font="Regular; 20" halign="left" valign="center" transparent="1" foregroundColor="labeltext" backgroundColor="background" />
+		<widget name="ButtonRedText" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="ButtonGreenText" position="360,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<eLabel text="Manage Cover" position="660,635" size="260,25" font="Regular;20" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+	</screen>
+	<!-- EMC CoverSearch Setup -->
+	<screen name="imdbSetup" position="0,0" size="1280,720" title="EMC Cover search setup" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="725,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="785,295" size="445,320" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="785,100" size="135,190" zPosition="-10" backgroundColor="tile_menu2" />
+		<eLabel position="925,100" size="305,190" zPosition="-10" backgroundColor="tile_menu_pig" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="config" position="70,115" size="700,480" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+	</screen>
+	<!-- EMC Single CoverSearch -->
+	<screen name="getCover" position="0,0" size="1280,720" title="EMC Cover Selecter" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="725,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="785,295" size="445,320" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="785,100" size="135,190" zPosition="-10" backgroundColor="tile_menu2" />
+		<eLabel position="925,100" size="305,190" zPosition="-10" backgroundColor="tile_menu_pig" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget name="poster" zPosition="2" position="785,100" size="135,190" alphatest="on" />
+		<widget name="menulist" position="70,115" size="700,480" itemHeight="30" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" transparent="1" enableWrapAround="on" />
+		<widget name="info" position="785,295" size="445,320" zPosition="0" font="Regular; 20" halign="center" valign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+	</screen>
+</skin>

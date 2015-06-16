@@ -1,0 +1,253 @@
+<skin>
+	<screen name="PVRState" position="460,540" size="100,60" backgroundColor="#20222222" zPosition="10" flags="wfNoBorder">
+		<widget name="state" position="0,0" size="100,60" font="LCD;26" halign="center" valign="center" backgroundColor="#20222222" />
+	</screen>
+	<screen name="MoviePlayer" position="0,0" size="1280,720" title="Infobar" backgroundColor="transparent" flags="wfNoBorder">
+		<eLabel position="0,540" size="1280,60" zPosition="-10" backgroundColor="#20222222" />
+		<eLabel position="0,615" size="1280,105" zPosition="-10" backgroundColor="#20000000" />
+		<eLabel position="0,600" size="1280,15" zPosition="-10" backgroundColor="#00000000" />
+		<widget source="session.CurrentService" render="Label" position="50,540" size="100,60" font="Regular;26" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="ServicePosition">Position, ShowHours</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="200,540" size="100,60" font="Regular;26" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="ServicePosition">Remaining, ShowHours</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="350,540" size="100,60" font="Regular;26" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="ServicePosition">Length, ShowHours</convert>
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" text="REC" position="565,540" size="60,60" zPosition="2" font="Regular; 24" valign="center" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" position="565,540" size="60,60" zPosition="3" valign="center" halign="center" text=" " backgroundColor="tile_rec">
+			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide">Blink</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="640,540" size="105,60" font="Regular; 26" halign="right" valign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ServiceInfo">VideoWidth</convert>
+		</widget>
+		<eLabel text="x" position="745,540" size="25,60" font="Regular; 22" valign="center" halign="center" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget source="session.CurrentService" render="Label" position="770,540" size="105,60" font="Regular; 26" valign="center" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="0">
+			<convert type="ServiceInfo">VideoHeight</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_format_on.png" position="875,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsWidescreen</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_txt_on.png" position="940,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">HasTelext</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_hd_on.png" position="1005,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">VideoWidth</convert>
+			<convert type="ValueRange">721,1980</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_dolby_on.png" position="1070,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsMultichannel</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Progress" foregroundColor="foreground" position="0,600" size="1280,15" zPosition="5" transparent="1">
+			<convert type="ServicePosition">Position</convert>
+		</widget>
+		<widget source="session.CurrentService" render="PositionGauge" position="0,600" size="1280,15" zPosition="10" transparent="1">
+			<convert type="ServicePosition">Gauge</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="50,625" size="1050,85" font="Regular;30" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" halign="left">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1070,630" size="180,60" font="Regular; 40" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="foreground">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1070,680" size="180,30" font="Regular; 24" valign="center" halign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+	</screen>
+	<screen name="DVDPlayer" position="0,0" size="1280,720" title="Infobar" backgroundColor="transparent" flags="wfNoBorder">
+		<eLabel position="0,540" size="1280,60" zPosition="-10" backgroundColor="#20222222" />
+		<eLabel position="0,615" size="1280,105" zPosition="-10" backgroundColor="#20000000" />
+		<eLabel position="0,600" size="1280,15" zPosition="-10" backgroundColor="#00000000" />
+		<widget source="session.CurrentService" render="Label" position="50,540" size="100,60" font="Regular;26" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="ServicePosition">Position, ShowHours</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="200,540" size="100,60" font="Regular;26" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="ServicePosition">Remaining, ShowHours</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="350,540" size="100,60" font="Regular;26" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="ServicePosition">Length, ShowHours</convert>
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" text="REC" position="565,540" size="60,60" zPosition="2" font="Regular; 24" valign="center" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" position="565,540" size="60,60" zPosition="3" valign="center" halign="center" text=" " backgroundColor="tile_rec">
+			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide">Blink</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="640,540" size="105,60" font="Regular; 26" halign="right" valign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ServiceInfo">VideoWidth</convert>
+		</widget>
+		<eLabel text="x" position="745,540" size="25,60" font="Regular; 22" valign="center" halign="center" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget source="session.CurrentService" render="Label" position="770,540" size="105,60" font="Regular; 26" valign="center" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="0">
+			<convert type="ServiceInfo">VideoHeight</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_format_on.png" position="875,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsWidescreen</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_txt_on.png" position="940,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">HasTelext</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_hd_on.png" position="1005,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">VideoWidth</convert>
+			<convert type="ValueRange">721,1980</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_dolby_on.png" position="1070,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsMultichannel</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Progress" foregroundColor="foreground" position="0,600" size="1280,15" zPosition="5" transparent="1">
+			<convert type="ServicePosition">Position</convert>
+		</widget>
+		<widget source="session.CurrentService" render="PositionGauge" position="0,600" size="1280,15" zPosition="10" transparent="1">
+			<convert type="ServicePosition">Gauge</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="50,625" size="1050,35" font="Regular;30" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" halign="left">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget name="chapterLabel" position="50,660" size="1050,35" font="Regular;26" valign="center" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1070,630" size="180,60" font="Regular; 40" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="foreground">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1070,680" size="180,30" font="Regular; 24" valign="center" halign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+	</screen>
+	<screen name="InfoBar" position="0,0" size="1280,720" title="Infobar" backgroundColor="transparent" flags="wfNoBorder">
+		<eLabel position="0,540" size="1280,60" zPosition="-10" backgroundColor="#20222222" />
+		<eLabel position="0,615" size="1280,105" zPosition="-10" backgroundColor="#20000000" />
+		<eLabel position="0,600" size="1280,15" zPosition="-10" backgroundColor="#00000000" />
+		<widget source="session.CurrentService" render="Label" position="20,545" size="80,50" font="Regular; 30" halign="center" valign="center" noWrap="1" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ExtendedServiceInfo">ServiceNumber</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="100,545" size="460,50" font="Regular;30" valign="center" noWrap="1" backgroundColor="backtop" transparent="1" foregroundColor="foreground" halign="center">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" text="REC" position="710,540" size="60,60" zPosition="2" font="Regular; 24" valign="center" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_format_on.png" position="775,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsWidescreen</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_txt_on.png" position="840,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">HasTelext</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_hd_on.png" position="905,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">VideoWidth</convert>
+			<convert type="ValueRange">721,1980</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="HbbtvApplication" render="Pixmap" pixmap="AtileHD/icons/ico_hbbtv_on.png" position="1035,540" size="60,60" zPosition="1" alphatest="blend">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_dolby_on.png" position="970,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsMultichannel</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_crypt_on.png" position="1100,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsCrypted</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_sub_on.png" position="1165,540" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">SubservicesAvailable</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="red" position="825,630" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">1</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="red" position="880,630" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">2</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="red" position="990,630" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">4</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="red" position="935,630" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">8</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="green" position="825,630" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">0,0</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="green" position="880,630" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">1,1</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="green" position="990,630" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">2,2</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="green" position="935,630" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">3,3</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.Event_Now" render="Progress" position="0,600" foregroundColor="slider_col_4" size="1280,15" zPosition="1" transparent="1">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Picon" position="43,636" zPosition="4" size="100,60" transparent="1" alphatest="blend">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="295,620" size="510,40" font="Regular; 28" halign="left" valign="center" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="170,620" size="115,40" font="Regular;24" halign="right" valign="center" backgroundColor="background" transparent="1" foregroundColor="labeltext" zPosition="2">
+			<convert type="EventTime">Remaining</convert>
+			<convert type="RemainingToText">InMinutes</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="295,660" size="510,40" font="Regular; 28" halign="left" valign="center" noWrap="1" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="170,660" size="115,40" font="Regular; 24" halign="right" valign="center" backgroundColor="background" foregroundColor="labeltext" transparent="1">
+			<convert type="EventTime">Duration</convert>
+			<convert type="ClockToText">InMinutes</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="800,680" size="125,30" font="Regular; 22" halign="right" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ServiceInfo">VideoWidth</convert>
+		</widget>
+		<eLabel text="x" position="925,680" size="25,30" font="Regular; 18" halign="center" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget source="session.CurrentService" render="Label" position="950,680" size="125,30" font="Regular; 22" halign="left" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="0">
+			<convert type="ServiceInfo">VideoHeight</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Label" position="640,555" size="60,30" font="Regular;24" backgroundColor="background" foregroundColor="foreground" transparent="1" valign="center" halign="center" zPosition="2">
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Label" position="570,555" size="60,30" font="Regular;24" backgroundColor="background" foregroundColor="foreground" transparent="1" valign="center" halign="center" zPosition="2">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1070,630" size="180,60" font="Regular; 40" valign="center"  halign="center" backgroundColor="background" transparent="1" foregroundColor="foreground">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1070,680" size="180,30" font="Regular; 24" valign="center" halign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+		<!-- Update Info -->
+		<widget source="session.CurrentService" position="20,545" size="80,50" zPosition="-5" render="FixedLabel" backgroundColor="tile_red">
+			<convert type="ConfigEntryTest">config.usage.update_available,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<!-- Update Info End -->
+	</screen>
+</skin>

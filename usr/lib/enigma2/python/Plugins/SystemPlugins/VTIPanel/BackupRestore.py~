@@ -1,0 +1,825 @@
+# 2015.06.16 12:36:40 CET
+#Embedded file name: /usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/BackupRestore.py
+from Screens.Screen import Screen
+from Screens.MessageBox import MessageBox
+from Screens.Console import Console
+from Components.ActionMap import ActionMap, NumberActionMap
+from Components.Pixmap import Pixmap
+from Components.Label import Label
+from Components.Sources.StaticText import StaticText
+from Components.MenuList import MenuList
+from Components.ProgressBar import ProgressBar
+from Components.config import getConfigListEntry, configfile, ConfigSelection, ConfigSubsection, ConfigText, ConfigLocations
+from Components.config import config
+from Components.ConfigList import ConfigList, ConfigListScreen
+from Components.FileList import MultiFileSelectList
+from Components.Console import Console as ComConsole
+from Plugins.Plugin import PluginDescriptor
+from enigma import eTimer, getDesktop, eConsoleAppContainer, getVTiVersionString
+from Tools.Directories import *
+from Tools.HardwareInfoVu import HardwareInfoVu
+from os import popen, path, makedirs, listdir, access, stat, rename, remove, W_OK, R_OK, chmod, remove
+from time import gmtime, strftime, localtime, time as systime, sleep
+from datetime import date, datetime
+from shutil import rmtree
+from __init__ import _
+config.plugins.vtipanel = ConfigSubsection()
+config.plugins.vtipanel.configurationbackup = ConfigSubsection()
+config.plugins.vtipanel.configurationbackup.backuplocation = ConfigText(default='/media/hdd/', visible_width=50, fixed_size=False)
+config.plugins.vtipanel.configurationbackup.backuplocationimage = ConfigText(default='/media/hdd/', visible_width=50, fixed_size=False)
+
+def getBackupPath():
+    backuppath = config.plugins.vtipanel.configurationbackup.backuplocation.value
+    if backuppath.endswith('/'):
+        return backuppath + 'vtibackup'
+    else:
+        return backuppath + '/vtibackup'
+
+
+def getBackupPathImage():
+    backuppath = config.plugins.vtipanel.configurationbackup.backuplocationimage.value
+    if backuppath.endswith('/'):
+        return backuppath + 'vti-image-backup'
+    else:
+        return backuppath + '/vti-image-backup'
+
+
+def getBackupFilename():
+    return 'vtibackup.tar.gz'
+
+
+class BackupScreen(Screen, ConfigListScreen):
+
+    def __init__(self, session, runBackup = False):
+        Screen.__init__(self, session)
+        self.session = session
+        self.runBackup = runBackup
+        self['actions'] = ActionMap(['WizardActions', 'DirectionActions'], {'ok': self.close,
+         'back': self.close,
+         'cancel': self.close}, -1)
+        self.finished_cb = None
+        self.backuppath = getBackupPath()
+        self.backupfile = getBackupFilename()
+        self.fullbackupfilename = self.backuppath + '/' + self.backupfile
+        self.list = []
+        ConfigListScreen.__init__(self, self.list)
+        self.onLayoutFinish.append(self.layoutFinished)
+        if self.runBackup:
+            self.onShown.append(self.doBackup)
+
+    def layoutFinished(self):
+        self.setWindowTitle()
+
+    def setWindowTitle(self):
+        self.setTitle(_('VTI-Backup is running...'))
+
+    def doBackup(self):
+        configfile.save()
+        try:
+            if path.exists(self.backuppath) == False:
+                makedirs(self.backuppath)
+            self.backupdirs = ' '.join(config.plugins.vtipanel.configurationbackup.backupdirs.value)
+            if path.exists(self.fullbackupfilename):
+                dt = str(date.fromtimestamp(stat(self.fullbackupfilename).st_ctime))
+                self.newfilename = self.backuppath + '/' + dt + '-' + self.backupfile
+                if path.exists(self.newfilename):
+                    remove(self.newfilename)
+                rename(self.fullbackupfilename, self.newfilename)
+            if self.finished_cb:
+                self.session.openWithCallback(self.finished_cb, Console, title=_('VTI-Backup is running...'), cmdlist=['tar -czvf ' + self.fullbackupfilename + ' ' + self.backupdirs], finishedCallback=self.backupFinishedCB, closeOnSuccess=True)
+            else:
+                self.session.open(Console, title=_('VTI-Backup is running...'), cmdlist=['tar -czvf ' + self.fullbackupfilename + ' ' + self.backupdirs], finishedCallback=self.backupFinishedCB, closeOnSuccess=True)
+        except OSError:
+            if self.finished_cb:
+                self.session.openWithCallback(self.finished_cb, MessageBox, _('Sorry your backup destination is not writeable.\nPlease choose an other one.'), MessageBox.TYPE_INFO, timeout=10)
+            else:
+                self.session.openWithCallback(self.backupErrorCB, MessageBox, _('Sorry your backup destination is not writeable.\nPlease choose an other one.'), MessageBox.TYPE_INFO, timeout=10)
+
+    def backupFinishedCB(self, retval = None):
+        self.close(True)
+
+    def backupErrorCB(self, retval = None):
+        self.close(False)
+
+    def runAsync(self, finished_cb):
+        self.finished_cb = finished_cb
+        self.doBackup()
+
+
+class BackupSelection(Screen):
+
+    def __init__(self, session):
+        Screen.__init__(self, session)
+        self['key_red'] = StaticText(_('Cancel'))
+        self['key_green'] = StaticText(_('Save'))
+        self['key_yellow'] = StaticText()
+        self.selectedFiles = config.plugins.vtipanel.configurationbackup.backupdirs.value
+        defaultDir = '/'
+        inhibitDirs = ['/boot',
+         '/dev',
+         '/autofs',
+         '/lib',
+         '/proc',
+         '/sbin',
+         '/sys',
+         '/hdd',
+         '/tmp',
+         '/mnt',
+         '/media']
+        self.filelist = MultiFileSelectList(self.selectedFiles, defaultDir, inhibitDirs=inhibitDirs)
+        self['checkList'] = self.filelist
+        self['actions'] = ActionMap(['DirectionActions', 'OkCancelActions', 'ShortcutActions'], {'cancel': self.exit,
+         'red': self.exit,
+         'yellow': self.changeSelectionState,
+         'green': self.saveSelection,
+         'ok': self.okClicked,
+         'left': self.left,
+         'right': self.right,
+         'down': self.down,
+         'up': self.up}, -1)
+        if self.selectionChanged not in self['checkList'].onSelectionChanged:
+            self['checkList'].onSelectionChanged.append(self.selectionChanged)
+        self.onLayoutFinish.append(self.layoutFinished)
+
+    def layoutFinished(self):
+        idx = 0
+        self['checkList'].moveToIndex(idx)
+        self.setWindowTitle()
+        self.selectionChanged()
+
+    def setWindowTitle(self):
+        self.setTitle(_('VTI-Backup - Select files/folders to backup'))
+
+    def selectionChanged(self):
+        current = self['checkList'].getCurrent()[0]
+        if current[2] is True:
+            self['key_yellow'].setText(_('Deselect'))
+        else:
+            self['key_yellow'].setText(_('Select'))
+
+    def up(self):
+        self['checkList'].up()
+
+    def down(self):
+        self['checkList'].down()
+
+    def left(self):
+        self['checkList'].pageUp()
+
+    def right(self):
+        self['checkList'].pageDown()
+
+    def changeSelectionState(self):
+        self['checkList'].changeSelectionState()
+        self.selectedFiles = self['checkList'].getSelectedList()
+
+    def saveSelection(self):
+        self.selectedFiles = self['checkList'].getSelectedList()
+        config.plugins.vtipanel.configurationbackup.backupdirs.value = self.selectedFiles
+        config.plugins.vtipanel.configurationbackup.backupdirs.save()
+        config.plugins.vtipanel.configurationbackup.save()
+        config.save()
+        self.close(None)
+
+    def exit(self):
+        self.close(None)
+
+    def okClicked(self):
+        if self.filelist.canDescent():
+            self.filelist.descent()
+
+
+class RestoreMenu(Screen):
+
+    def __init__(self, session, plugin_path):
+        Screen.__init__(self, session)
+        self.skin_path = plugin_path
+        self['key_red'] = StaticText(_('Cancel'))
+        self['key_green'] = StaticText(_('Restore'))
+        self['key_yellow'] = StaticText(_('Delete'))
+        self.sel = []
+        self.val = []
+        self.entry = False
+        self.exe = False
+        self.path = ''
+        self['actions'] = NumberActionMap(['SetupActions'], {'ok': self.KeyOk,
+         'cancel': self.keyCancel}, -1)
+        self['shortcuts'] = ActionMap(['ShortcutActions'], {'red': self.keyCancel,
+         'green': self.KeyOk,
+         'yellow': self.deleteFile})
+        self.flist = []
+        self['filelist'] = MenuList(self.flist)
+        self.fill_list()
+        self.onLayoutFinish.append(self.layoutFinished)
+
+    def layoutFinished(self):
+        self.setWindowTitle()
+
+    def setWindowTitle(self):
+        self.setTitle(_('VTI-Restore backups'))
+
+    def fill_list(self):
+        self.flist = []
+        self.path = getBackupPath()
+        if path.exists(self.path) == False:
+            makedirs(self.path)
+        for file in listdir(self.path):
+            if file.endswith('.tar.gz'):
+                self.flist.append(file)
+                self.entry = True
+
+        self.flist.sort(reverse=True)
+        self['filelist'].l.setList(self.flist)
+
+    def KeyOk(self):
+        if self.exe == False and self.entry == True:
+            self.sel = self['filelist'].getCurrent()
+            self.val = self.path + '/' + self.sel
+            self.session.openWithCallback(self.startRestore, MessageBox, _('Are you sure you want to restore\nfollowing backup:\n') + self.sel + _('\nSystem will restart after the restore!'))
+
+    def keyCancel(self):
+        self.close()
+
+    def startRestore(self, ret = False):
+        if ret == True:
+            self.exe = True
+            self.session.open(Console, title=_('Restore running'), cmdlist=['tar -xzvf ' + self.path + '/' + self.sel + ' -C /', 'killall -9 enigma2'])
+
+    def deleteFile(self):
+        if self.exe == False and self.entry == True:
+            self.sel = self['filelist'].getCurrent()
+            self.val = self.path + '/' + self.sel
+            self.session.openWithCallback(self.startDelete, MessageBox, _('Are you sure you want to delete\nfollowing backup:\n' + self.sel))
+
+    def startDelete(self, ret = False):
+        if ret == True:
+            self.exe = True
+            if path.exists(self.val) == True:
+                remove(self.val)
+            self.exe = False
+            self.fill_list()
+
+
+class RestoreScreen(Screen, ConfigListScreen):
+
+    def __init__(self, session, runRestore = False):
+        Screen.__init__(self, session)
+        self.session = session
+        self.runRestore = runRestore
+        self['actions'] = ActionMap(['WizardActions', 'DirectionActions'], {'ok': self.close,
+         'back': self.close,
+         'cancel': self.close}, -1)
+        self.finished_cb = None
+        self.backuppath = getBackupPath()
+        self.backupfile = getBackupFilename()
+        self.fullbackupfilename = self.backuppath + '/' + self.backupfile
+        self.list = []
+        ConfigListScreen.__init__(self, self.list)
+        self.onLayoutFinish.append(self.layoutFinished)
+        if self.runRestore:
+            self.onShown.append(self.doRestore)
+
+    def layoutFinished(self):
+        self.setWindowTitle()
+
+    def setWindowTitle(self):
+        self.setTitle(_('VTI-Restore is running...'))
+
+    def doRestore(self):
+        if path.exists('/proc/stb/vmpeg/0/dst_width'):
+            restorecmdlist = ['tar -xzvf ' + self.fullbackupfilename + ' -C /',
+             'echo 0 > /proc/stb/vmpeg/0/dst_height',
+             'echo 0 > /proc/stb/vmpeg/0/dst_left',
+             'echo 0 > /proc/stb/vmpeg/0/dst_top',
+             'echo 0 > /proc/stb/vmpeg/0/dst_width',
+             'killall -9 enigma2']
+        else:
+            restorecmdlist = ['tar -xzvf ' + self.fullbackupfilename + ' -C /', 'killall -9 enigma2']
+        if self.finished_cb:
+            self.session.openWithCallback(self.finished_cb, Console, title=_('Restore is running...'), cmdlist=restorecmdlist)
+        else:
+            self.session.open(Console, title=_('VTI-Restore is running...'), cmdlist=restorecmdlist)
+
+    def backupFinishedCB(self, retval = None):
+        self.close(True)
+
+    def backupErrorCB(self, retval = None):
+        self.close(False)
+
+    def runAsync(self, finished_cb):
+        self.finished_cb = finished_cb
+        self.doRestore()
+
+
+class RestoreMenuImage(Screen):
+
+    def __init__(self, session, plugin_path):
+        Screen.__init__(self, session)
+        self.skin_path = plugin_path
+        self['key_red'] = StaticText(_('Cancel'))
+        self['key_green'] = StaticText(_('Restore'))
+        self['key_yellow'] = StaticText(_('Delete'))
+        self.sel = []
+        self.val = []
+        self.entry = False
+        self.exe = False
+        self.path = ''
+        self['actions'] = NumberActionMap(['SetupActions'], {'ok': self.KeyOk,
+         'cancel': self.keyCancel}, -1)
+        self['shortcuts'] = ActionMap(['ShortcutActions'], {'red': self.keyCancel,
+         'green': self.KeyOk,
+         'yellow': self.deleteFile})
+        self.flist = []
+        self['filelist'] = MenuList(self.flist)
+        self.fill_list()
+        self.onLayoutFinish.append(self.layoutFinished)
+
+    def layoutFinished(self):
+        self.setWindowTitle()
+
+    def setWindowTitle(self):
+        self.setTitle(_('VTI-Restore backups'))
+
+    def fill_list(self):
+        self.flist = []
+        self.path = getBackupPathImage()
+        boxtypes = ('solo', 'duo', 'uno', 'ultimo', 'solo2', 'duo2', 'solose', 'zero')
+        boxtype = HardwareInfoVu().get_device_name()
+        if path.exists(self.path) == False:
+            makedirs(self.path)
+        for dir in listdir(self.path):
+            show_file = True
+            for box in boxtypes:
+                if dir.find('-' + box + '-') != -1:
+                    if box == boxtype:
+                        show_file = True
+                    else:
+                        show_file = False
+                    break
+
+            if (dir.startswith('vti-') or dir.startswith('vti_')) and show_file == True:
+                self.flist.append(dir)
+                self.entry = True
+
+        self.flist.sort(reverse=True)
+        self['filelist'].l.setList(self.flist)
+
+    def KeyOk(self):
+        if self.exe == False and self.entry == True:
+            self.sel = self['filelist'].getCurrent()
+            self.val = self.path + '/' + self.sel
+            self.session.openWithCallback(self.startRestore, MessageBox, _('Are you sure you want to restore\nfollowing backup:\n') + self.sel + _('\nSystem will restart after the restore!'))
+
+    def keyCancel(self):
+        self.close()
+
+    def startRestore(self, ret = False):
+        if ret == True:
+            self.exe = True
+            self.restorepath = self.path + '/' + self.sel
+            if fileExists(self.restorepath + '/vuplus/duo/kernel_cfe_auto.bin') and fileExists(self.restorepath + '/vuplus/duo/root_cfe_auto.jffs2'):
+                self.session.open(BackupRestoreScreen, title=_('VTi Restore Image'), restorepath=self.restorepath)
+            elif fileExists(self.restorepath + '/vuplus/solo/kernel_cfe_auto.bin') and fileExists(self.restorepath + '/vuplus/solo/root_cfe_auto.jffs2'):
+                self.session.open(BackupRestoreScreen, title=_('VTi Restore Image'), restorepath=self.restorepath)
+            elif fileExists(self.restorepath + '/vuplus/uno/kernel_cfe_auto.bin') and fileExists(self.restorepath + '/vuplus/uno/root_cfe_auto.jffs2'):
+                self.session.open(BackupRestoreScreen, title=_('VTi Restore Image'), restorepath=self.restorepath)
+            elif fileExists(self.restorepath + '/vuplus/ultimo/kernel_cfe_auto.bin') and fileExists(self.restorepath + '/vuplus/ultimo/root_cfe_auto.jffs2'):
+                self.session.open(BackupRestoreScreen, title=_('VTi Restore Image'), restorepath=self.restorepath)
+            elif fileExists(self.restorepath + '/vuplus/solo2/kernel_cfe_auto.bin') and fileExists(self.restorepath + '/vuplus/solo2/root_cfe_auto.bin'):
+                self.session.open(BackupRestoreScreen, title=_('VTi Restore Image'), restorepath=self.restorepath)
+            elif fileExists(self.restorepath + '/vuplus/duo2/kernel_cfe_auto.bin') and fileExists(self.restorepath + '/vuplus/duo2/root_cfe_auto.bin'):
+                self.session.open(BackupRestoreScreen, title=_('VTi Restore Image'), restorepath=self.restorepath)
+            elif fileExists(self.restorepath + '/vuplus/solose/kernel_cfe_auto.bin') and fileExists(self.restorepath + '/vuplus/solose/root_cfe_auto.bin'):
+                self.session.open(BackupRestoreScreen, title=_('VTi Restore Image'), restorepath=self.restorepath)
+            elif fileExists(self.restorepath + '/vuplus/zero/kernel_cfe_auto.bin') and fileExists(self.restorepath + '/vuplus/zero/root_cfe_auto.bin'):
+                self.session.open(BackupRestoreScreen, title=_('VTi Restore Image'), restorepath=self.restorepath)
+            else:
+                self.session.open(MessageBox, _('No image found!!!! \n\nPlease copy usb image or restore image to /media/hdd/vuplus/duo/solo/uno or ultimo .'), MessageBox.TYPE_INFO, timeout=5)
+
+    def deleteFile(self):
+        if self.exe == False and self.entry == True:
+            self.sel = self['filelist'].getCurrent()
+            self.val = self.path + '/' + self.sel
+            self.session.openWithCallback(self.startDelete, MessageBox, _('Are you sure you want to delete\nfollowing backup:\n' + self.sel))
+
+    def startDelete(self, ret = False):
+        if ret == True:
+            self.exe = True
+            if path.exists(self.val) == True:
+                rmtree(self.val, ignore_errors=True)
+            self.exe = False
+            self.fill_list()
+
+
+class BackupRestoreScreen(Screen):
+    global skin_1
+    global skin_2
+    try:
+        sz_w = getDesktop(0).size().width()
+    except:
+        sz_w = 720
+
+    if sz_w > 720:
+        skin_1 = '\n\t\t\t<screen name="BackupRestoreScreen" position="center,center" size="1280,720" backgroundColor="#000000" flags="wfNoBorder">\n\t\t\t\t<widget name="description" position="0,0" size="1280,360"  font="Regular;24" halign="center" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="progress" position="50,360" zPosition="1" borderWidth="1" size="1180,20" backgroundColor="#111111" transparent="0" />\n\t\t\t\t<widget name="task_one" position="50,390" size="900,30"  font="Regular;24" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_one_state" position="950,390" size="280,30"  font="Regular;24" halign="right" valign="center" foregroundColor="#40FF00" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_two" position="50,420" size="900,30"  font="Regular;24" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_two_state" position="950,420" size="280,30"  font="Regular;24" halign="right" valign="center" foregroundColor="#40FF00" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_three" position="50,450" size="900,30"  font="Regular;24" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_three_state" position="950,450" size="280,30"  font="Regular;24" halign="right" valign="center" foregroundColor="#40FF00" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_four" position="50,480" size="900,30"  font="Regular;24" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_four_state" position="950,480" size="280,30"  font="Regular;24" halign="right" valign="center" foregroundColor="#40FF00" backgroundColor="#000000" transparent="0" />\n\t\t\t</screen>\n\t\t\t'
+        skin_2 = '\n\t\t\t<screen name="BackupRestoreScreen" position="center,center" size="1280,720" backgroundColor="#000000" flags="wfNoBorder">\n\t\t\t\t<widget name="description" position="0,0" size="1280,720"  font="Regular;30" halign="center" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t</screen>\n\t\t\t'
+    else:
+        skin_1 = '\n\t\t\t<screen name="BackupRestoreScreen" position="center,center" size="720,576" backgroundColor="#000000" flags="wfNoBorder">\n\t\t\t\t<widget name="description" position="0,0" size="720,288"  font="Regular;20" halign="center" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="progress" position="50,290" zPosition="1" borderWidth="1" size="620,20" backgroundColor="#111111" transparent="0" />\n\t\t\t\t<widget name="task_one" position="50,320" size="440,30"  font="Regular;20" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_one_state" position="490,320" size="180,30"  font="Regular;20" halign="right" valign="center" foregroundColor="#40FF00" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_two" position="50,350" size="440,30"  font="Regular;20" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_two_state" position="490,350" size="180,30"  font="Regular;20" halign="right" valign="center" foregroundColor="#40FF00" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_three" position="50,380" size="440,30"  font="Regular;20" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_three_state" position="490,380" size="180,30"  font="Regular;20" halign="right" valign="center" foregroundColor="#40FF00" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_four" position="50,410" size="440,30"  font="Regular;20" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t\t<widget name="task_four_state" position="490,410" size="180,30"  font="Regular;20" halign="right" valign="center" foregroundColor="#40FF00" backgroundColor="#000000" transparent="0" />\n\t\t\t</screen>\n\t\t\t'
+        skin_2 = '\n\t\t\t<screen name="BackupRestoreScreen" position="center,center" size="720,576" backgroundColor="#000000" flags="wfNoBorder">\n\t\t\t\t<widget name="description" position="0,0" size="720,576"  font="Regular;30" halign="center" valign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="0" />\n\t\t\t</screen>\n\t\t\t'
+
+    def __init__(self, session, title = 'Restore/Backup VTimage', restorepath = None, backuppath = None, image_flash = False):
+        Screen.__init__(self, session)
+        self.restorepath = restorepath
+        self.backuppath = backuppath
+        self.image_flash = image_flash
+        self.run = True
+        self.error = False
+        self.finished = False
+        self.device = HardwareInfoVu().get_device_name()
+        self.vtiversion = getVTiVersionString()
+        if self.restorepath:
+            skin = skin_2
+        elif self.backuppath:
+            skin = skin_1
+            self['task_one'] = Label()
+            self['task_two'] = Label()
+            self['task_three'] = Label()
+            self['task_four'] = Label()
+            self['task_one_state'] = Label()
+            self['task_two_state'] = Label()
+            self['task_three_state'] = Label()
+            self['task_four_state'] = Label()
+            self['progress'] = ProgressBar()
+        self.skin = skin
+        self['actions'] = ActionMap(['OkCancelActions'], {'ok': self.keyOk,
+         'cancel': self.keyCancel})
+        self['description'] = Label()
+        self.text_done = _('[ ok ]')
+        self.logfile = '/tmp/vti-backup.log'
+        self.text_logfile_hint = _('\n\nPlease take a look at\n%s\nfor more details') % self.logfile
+        self.mount = '/bin/mount'
+        self.umount = '/bin/umount'
+        self.rm = '/bin/rm'
+        self.touch = '/bin/touch'
+        self.mk_ubifs = '/usr/sbin/mkfs.ubifs'
+        self.mk_jffs2 = '/usr/sbin/mkfs.jffs2'
+        self.nanddump = '/usr/sbin/nanddump'
+        self.ubinize = '/usr/sbin/ubinize'
+        self.flash_erase = '/usr/sbin/flash_erase'
+        self.nand_write = '/usr/sbin/nandwrite'
+        self.ubi_image2nand = '/usr/sbin/ubi-image2nand'
+        self.onLayoutFinish.append(self.layoutFinished)
+
+    def layoutFinished(self):
+        self.cmdlist = []
+        self.task = 0
+        self.container = eConsoleAppContainer()
+        self.container.appClosed.append(self.cmd_run_finished)
+        self.Console = ComConsole()
+        if path.exists(self.logfile):
+            remove(self.logfile)
+        if self.restorepath:
+            text = _('Restore of selected image is in progress.\nYour Vu+ STB will be rebooted after write process\nDo not power off !!!\n\nPlease wait ...')
+            if self.image_flash:
+                text = _('Flash process of selected image is in progress.\nYour Vu+ STB will be rebooted after write process\nDo not power off !!!\n\nPlease wait ...')
+            self['description'].setText(text)
+            self.setVariablesRestore()
+        else:
+            self['progress'].setValue(0)
+            text = _('Backup of your running image is in progress.\nThe backup can take a few minutes\nPlease wait ...')
+            self['description'].setText(text)
+            self.setVariablesBackup()
+
+    def do_log(self, result):
+        with open(self.logfile, 'a') as file:
+            file.write(result)
+
+    def getRootSize(self):
+        from os import statvfs
+        stat_info = statvfs('/')
+        free = stat_info.f_bfree * stat_info.f_bsize
+        total = stat_info.f_blocks * stat_info.f_bsize
+        used = total - free
+        return used
+
+    def checkBinaries(self):
+        if self.restorepath:
+            bins = (self.flash_erase,
+             self.nand_write,
+             self.ubi_image2nand,
+             self.mount)
+            for binary in bins:
+                if not path.exists(binary):
+                    return False
+                    break
+
+        elif self.backuppath:
+            bins = (self.touch,
+             self.mk_ubifs,
+             self.mk_jffs2,
+             self.nanddump,
+             self.ubinize,
+             self.mount,
+             self.umount,
+             self.rm)
+            for binary in bins:
+                if not path.exists(binary):
+                    return False
+                    break
+
+        return True
+
+    def cleanupBackup(self):
+        self.cmdlist = []
+        self.cmdlist.append('%s /tmp/bi/root' % self.umount)
+        self.cmdlist.append('%s %s' % (self.rm, self.ubicfgfile))
+        self.cmdlist.append('%s %s/vti.rootfs.ubifs' % (self.rm, self.backuppath))
+        self.cmdlist.append('if [ ! -d /tmp/bi/root/dev ] ; then %s -rf /tmp/bi; fi' % self.rm)
+        if self.error:
+            self.backuppath = self.backuppath.replace('/vuplus/%s' % self.device, '')
+            self.cmdlist.append('%s -rf %s' % (self.rm, self.backuppath))
+        else:
+            self.cmdlist.append('%s -f %s' % (self.rm, self.logfile))
+        self.cmd_run()
+
+    def createFolder(self):
+        if not path.exists(self.backuppath):
+            try:
+                makedirs(self.backuppath)
+            except:
+                return 1
+
+        if not path.exists('/tmp/bi/root'):
+            try:
+                makedirs('/tmp/bi/root')
+            except:
+                return 1
+
+        return 0
+
+    def setVariablesBackup(self):
+        if self.device == 'solo2':
+            self.ubifsargs = '-m 2048 -e 126976 -c 4096'
+            self.ubinizeargs = '-m 2048 -p 128KiB'
+            self.mtdkernel = '2'
+            self.rootfsname = 'root_cfe_auto.bin'
+        elif self.device == 'zero':
+            self.ubifsargs = '-m 2048 -e 126976 -c 4096'
+            self.ubinizeargs = '-m 2048 -p 128KiB'
+            self.mtdkernel = '2'
+            self.rootfsname = 'root_cfe_auto.bin'
+        elif self.device == 'solose':
+            self.ubifsargs = '-m 2048 -e 126976 -c 4096'
+            self.ubinizeargs = '-m 2048 -p 128KiB'
+            self.mtdkernel = '2'
+            self.rootfsname = 'root_cfe_auto.bin'
+        elif self.device == 'duo2':
+            self.ubifsargs = '-m 2048 -e 126976 -c 8192'
+            self.ubinizeargs = '-m 2048 -p 128KiB'
+            self.mtdkernel = '2'
+            self.rootfsname = 'root_cfe_auto.bin'
+        elif self.device == 'duo':
+            self.boot_options = '--eraseblock=0x20000 -n -l'
+            self.ubifsargs = '-m 2048 -e 126976 -c 4096 -F'
+            self.ubinizeargs = '-m 2048 -p 128KiB'
+            self.mtdkernel = '1'
+            self.rootfsname = 'root_cfe_auto.jffs2'
+        elif self.device == 'solo':
+            self.boot_options = '--eraseblock=0x20000 -n -l'
+            self.ubifsargs = '-m 2048 -e 126976 -c 4096 -F'
+            self.ubinizeargs = '-m 2048 -p 128KiB'
+            self.mtdkernel = '1'
+            self.rootfsname = 'root_cfe_auto.jffs2'
+        elif self.device == 'uno':
+            self.boot_options = '--eraseblock=0x20000 -n -l'
+            self.ubifsargs = '-m 2048 -e 126976 -c 4096 -F'
+            self.ubinizeargs = '-m 2048 -p 128KiB'
+            self.mtdkernel = '1'
+            self.rootfsname = 'root_cfe_auto.jffs2'
+        elif self.device == 'ultimo':
+            self.boot_options = '--eraseblock=0x20000 -n -l'
+            self.ubifsargs = '-m 2048 -e 126976 -c 3894 -F'
+            self.ubinizeargs = '-m 2048 -p 128KiB'
+            self.mtdkernel = '1'
+            self.rootfsname = 'root_cfe_auto.jffs2'
+        text = _('preparing backup of image')
+        self['task_one'].setText(text)
+        self.rootsize = self.getRootSize()
+        self.boot_options = None
+        self.ubicfgfile = '/tmp/ubinize.cfg'
+        system('%s %s' % (self.touch, self.ubicfgfile))
+        now = systime()
+        now = datetime.fromtimestamp(now)
+        now = now.strftime('%Y-%m-%d_%H-%M-%S')
+        self.backuppath = self.backuppath + '/vti_' + self.vtiversion + '_backup-image_' + self.device + '_' + now + '/vuplus/' + self.device
+        if self.createFolder():
+            errmsg = _('Error at creating backup directories\nPlease try another backup location') + self.text_logfile_hint
+            self.errorBox(errmsg)
+            return
+        if self.checkBinaries():
+            self.startMount()
+        else:
+            errmsg = _('The system is missing some necessary files !')
+            self.errorBox(errmsg)
+
+    def startMount(self):
+        cmd = '%s -t ubifs ubi0:rootfs /tmp/bi/root' % self.mount
+        self.Console.ePopen(cmd, self.rootmounted)
+
+    def rootmounted(self, result, retval, extra_args = None):
+        self.do_log(result)
+        if retval == 0:
+            self.backuproot()
+        else:
+            errmsg = _('Backup of root filesystem failed') + self.text_logfile_hint
+            self.errorBox(errmsg)
+
+    def backuproot(self):
+        content_ubifile = '[ubifs]\nmode=ubi\nimage=%s/vti.rootfs.ubifs\nvol_id=0\nvol_type=dynamic\nvol_name=rootfs\nvol_flags=autoresize\n\n' % self.backuppath
+        f = open(self.ubicfgfile, 'w')
+        f.write(content_ubifile)
+        f.close()
+        self.vti_root_ubifs = '%s/vti.rootfs.ubifs' % self.backuppath
+        system('%s %s' % (self.touch, self.vti_root_ubifs))
+        if path.exists(self.vti_root_ubifs):
+            chmod(self.vti_root_ubifs, 511)
+            self['task_one_state'].setText(self.text_done)
+            self['progress'].setValue(10)
+            self.startProgressTimer()
+            text = _('backup root filesystem')
+            self['task_two'].setText(text)
+            cmd = '%s -r /tmp/bi/root -o %s %s' % (self.mk_ubifs, self.vti_root_ubifs, self.ubifsargs)
+            self.Console.ePopen(cmd, self.ubinizeroot)
+        else:
+            errmsg = _('Error at preparing system for backup') + self.text_logfile_hint
+            self.errorBox(errmsg)
+
+    def ubinizeroot(self, result, retval, extra_args = None):
+        self.do_log(result)
+        try:
+            self.progressTimer.stop()
+        except:
+            pass
+
+        if retval == 0 and path.exists(self.vti_root_ubifs):
+            self['progress'].setValue(85)
+            self['task_two_state'].setText(self.text_done)
+            text = _('create flashable file of root filesystem')
+            self['task_three'].setText(text)
+            cmd = '%s -o %s/%s %s %s' % (self.ubinize,
+             self.backuppath,
+             self.rootfsname,
+             self.ubinizeargs,
+             self.ubicfgfile)
+            self.Console.ePopen(cmd, self.kerneldump)
+        else:
+            errmsg = _('Backup of root filesystem failed') + self.text_logfile_hint
+            self.errorBox(errmsg)
+
+    def kerneldump(self, result, retval, extra_args = None):
+        self.do_log(result)
+        if retval == 0:
+            text = _('backup of running kernel')
+            self['task_four'].setText(text)
+            self['progress'].setValue(90)
+            self['task_three_state'].setText(self.text_done)
+            cmd = '%s --bb=skipbad --omitoob --quiet /dev/mtd%s > %s/kernel_cfe_auto.bin' % (self.nanddump, self.mtdkernel, self.backuppath)
+            self.Console.ePopen(cmd, self.backup_finished)
+        else:
+            errmsg = _('Backup of root filesystem failed') + self.text_logfile_hint
+            self.errorBox(errmsg)
+
+    def backup_finished(self, result, retval, extra_args = None):
+        self.do_log(result)
+        if retval == 0:
+            self['progress'].setValue(95)
+            backup_files = listdir(self.backuppath)
+            for f in backup_files:
+                f = '%s/%s' % (self.backuppath, f)
+                if path.exists(f):
+                    chmod(f, 420)
+
+            self.backup_success()
+        else:
+            errmsg = _('Backup of kernel failed') + self.text_logfile_hint
+            self.errorBox(errmsg)
+
+    def backup_success(self):
+        self.run = False
+        self.error = False
+        self.finished = True
+        self.cleanupBackup()
+        self['progress'].setValue(100)
+        self['task_four_state'].setText(self.text_done)
+        text = _('Image backup finished successfully')
+        self['description'].setText(text)
+
+    def setVariablesRestore(self):
+        boot_cfe_file = None
+        if self.device == 'solo2':
+            rootfsname = 'root_cfe_auto.bin'
+            mtdkernel = '2'
+        elif self.device == 'zero':
+            rootfsname = 'root_cfe_auto.bin'
+            mtdkernel = '2'
+        elif self.device == 'solose':
+            rootfsname = 'root_cfe_auto.bin'
+            mtdkernel = '2'
+        elif self.device == 'duo2':
+            rootfsname = 'root_cfe_auto.bin'
+            mtdkernel = '2'
+        elif self.device == 'duo':
+            rootfsname = 'root_cfe_auto.jffs2'
+            mtdkernel = '1'
+            mtdbootcfe = '2'
+            boot_cfe_file = 'boot_cfe_auto.jffs2'
+        elif self.device == 'solo':
+            rootfsname = 'root_cfe_auto.jffs2'
+            mtdkernel = '1'
+            mtdbootcfe = '2'
+            boot_cfe_file = 'boot_cfe_auto.jffs2'
+        elif self.device == 'uno':
+            rootfsname = 'root_cfe_auto.jffs2'
+            mtdkernel = '1'
+            mtdbootcfe = '2'
+            boot_cfe_file = 'boot_cfe_auto.jffs2'
+        elif self.device == 'ultimo':
+            rootfsname = 'root_cfe_auto.jffs2'
+            mtdkernel = '1'
+            mtdbootcfe = '2'
+            boot_cfe_file = 'boot_cfe_auto.jffs2'
+        rootfs = self.restorepath + '/vuplus/' + self.device + '/' + rootfsname
+        kernelfile = self.restorepath + '/vuplus/' + self.device + '/kernel_cfe_auto.bin'
+        if path.exists(rootfs) and path.exists(kernelfile):
+            if self.session.current_dialog:
+                self.session.nav.stopService()
+            self.cmdlist.append('/usr/local/hbb-browser/launcher stop')
+            self.cmdlist.append('/usr/lib/enigma2/python/Plugins/Extensions/DLNAServer/./dlnaserver -e')
+            self.cmdlist.append('killall -9 smbd')
+            self.cmdlist.append('sleep 5')
+            self.cmdlist.append('sync')
+            if boot_cfe_file:
+                boot_cfe_file = self.restorepath + '/vuplus/' + self.device + '/' + boot_cfe_file
+                if path.exists(boot_cfe_file):
+                    self.cmdlist.append('%s -q -j /dev/mtd%s 0 0 > /dev/ttyS0' % (self.flash_erase, mtdbootcfe))
+                    self.cmdlist.append('%s -q -p /dev/mtd%s %s > /dev/ttyS0' % (self.nand_write, mtdbootcfe, boot_cfe_file))
+            self.cmdlist.append('%s  /dev/mtd%s 0 0 > /dev/ttyS0' % (self.flash_erase, mtdkernel))
+            self.cmdlist.append('%s -q -p /dev/mtd%s  %s > /dev/ttyS0' % (self.nand_write, mtdkernel, kernelfile))
+            self.cmdlist.append('init 2 ; sleep 3 ; sync ; %s /dev/mtd0 --image %s > /dev/ttyS0' % (self.ubi_image2nand, rootfs))
+            if self.checkBinaries():
+                self.cmd_run()
+            else:
+                errmsg = _('The system is missing some necessary files !')
+                self.errorBox(errmsg)
+
+    def startProgressTimer(self):
+        self.progressTimer = eTimer()
+        self.progressTimer.start(5000, True)
+        self.progressTimer.callback.append(self.endTimer)
+
+    def endTimer(self):
+        if path.exists(self.vti_root_ubifs):
+            st = stat(self.vti_root_ubifs)
+            size = st.st_size
+            progress = int((size - self.rootsize) / float(self.rootsize) * 75.0 + 85.0)
+            if size <= self.rootsize:
+                self['progress'].setValue(progress)
+                self.startProgressTimer()
+
+    def cmd_run(self):
+        if self.container.execute(self.cmdlist[self.task]):
+            self.cmd_run_finished(-1)
+
+    def cmd_run_finished(self, retval):
+        self.task += 1
+        if self.task != len(self.cmdlist):
+            if self.container.execute(self.cmdlist[self.task]):
+                self.cmd_run_finished(-1)
+        else:
+            self.task = 0
+            if not self.finished:
+                self.close()
+
+    def errorBox(self, errmsg):
+        self.run = False
+        self.error = True
+        self['description'].setText(errmsg)
+
+    def keyCancel(self, ret = None):
+        if self.Console is not None:
+            if len(self.Console.appContainers):
+                for name in self.Console.appContainers.keys():
+                    self.Console.kill(name)
+
+        if self.run:
+            self.error = True
+        if self.backuppath and not self.finished:
+            self.cleanupBackup()
+        else:
+            self.close()
+
+    def keyOk(self):
+        if not self.run:
+            self.keyCancel()
++++ okay decompyling BackupRestore.pyo 
+# decompiled 1 files: 1 okay, 0 failed, 0 verify failed
+# 2015.06.16 12:36:41 CET

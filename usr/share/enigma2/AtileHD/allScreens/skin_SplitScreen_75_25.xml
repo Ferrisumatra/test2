@@ -1,0 +1,25 @@
+<skin>
+	<screen name="SplitScreen" position="0,0" zPosition="-1" size="1280,720" flags="wfNoBorder" backgroundColor="#00000000" >
+		<widget name="zap_focus" position="0,0" zPosition="10"  halign="center" valign="center" backgroundColor="transparent" size="1280,720" font="Regular;40" />
+		<widget name="video1" position="0,0" size="960,540" backgroundColor="transparent" />
+		<widget source="MasterService" render="Label" position="970,100" size="260,100" font="Regular;24" backgroundColor="#00000000" transparent="1" foregroundColor="foreground" halign="left">
+			<convert type="ServiceName" />
+		</widget>
+		<widget source="MasterService" render="Label" position="970,205" size="260,100" font="Regular;24" backgroundColor="#00000000" transparent="1" foregroundColor="foreground" halign="left">
+			<convert type="EventName" />
+		</widget>
+		<widget source="MasterService" render="Picon" position="970,310" zPosition="1" size="100,60" transparent="1" alphatest="blend">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+		<widget name="video2" position="960,540" size="320,180" backgroundColor="transparent" />
+		<widget source="SlaveService" render="Label" position="50,550" size="900,30" font="Regular;24" backgroundColor="#00000000" transparent="1" foregroundColor="foreground" halign="right">
+			<convert type="ServiceName" />
+		</widget>
+		<widget source="SlaveService" render="Label" position="50,585" size="900,30" font="Regular;24" backgroundColor="#00000000" transparent="1" foregroundColor="foreground" halign="right">
+			<convert type="EventName" />
+		</widget>
+		<widget source="SlaveService" render="Picon" position="850,620" zPosition="1" size="100,60" transparent="1" alphatest="blend">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+	</screen>
+</skin>

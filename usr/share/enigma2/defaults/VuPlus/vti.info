@@ -1,0 +1,25 @@
+<default>
+	<prerequisites>
+		<hardware type="vuplus" />
+	</prerequisites>
+	
+	<info>
+		<author>plnick@vuplus-support.org</author>
+		<name>VTi http://vuplus-support.org</name>
+	</info>
+	<files type="directories">
+		<file type="config" name="settings.vuplus" />
+		<file type="bouquetroot" directory="" name="bouquets.tv" />
+		<file type="bouquetroot" directory="" name="radio.tv" />
+		<file type="config" name="settings.c">
+			<prerequisites>
+				<bcastsystem type="DVB-C" />
+			</prerequisites>
+		</file>
+		<file type="config" name="settings.t">
+			<prerequisites>
+				<bcastsystem type="DVB-T" />
+			</prerequisites>
+		</file>
+	</files>
+</default>

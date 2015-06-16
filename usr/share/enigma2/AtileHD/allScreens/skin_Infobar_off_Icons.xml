@@ -1,0 +1,540 @@
+<skin>
+<!-- InfoBar -->
+	<screen name="InfoBar" position="0,0" size="1280,720" title="Infobar" backgroundColor="transparent" flags="wfNoBorder">
+		<!-- Tiles Back -->
+		<eLabel position="50,480" size="1185,230" zPosition="-15" backgroundColor="tile_back" />
+		<!-- Tiles 1 -->
+		<eLabel position="60,425" size="125,125" zPosition="-10" backgroundColor="tile_channel" />
+		<eLabel position="190,490" size="385,60" zPosition="-10" backgroundColor="tile_prog" />
+		<eLabel position="580,490" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="645,490" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="710,490" size="60,60" zPosition="-10" backgroundColor="tile_rec" />
+		<eLabel position="775,490" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="840,490" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="905,490" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="970,490" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="1035,490" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="1100,490" size="125,60" zPosition="-10" backgroundColor="tile_clock0" />
+		<!-- Tiles 2 -->
+		<eLabel position="60,555" size="125,60" zPosition="-10" backgroundColor="tile_picon" />
+		<eLabel position="190,555" size="580,60" zPosition="-10" backgroundColor="tile_epg0" />
+		<eLabel position="775,555" size="60,60" zPosition="-10" backgroundColor="tile_epg0" />
+		<eLabel position="840,555" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="905,555" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="970,555" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="1035,555" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="1100,555" size="125,125" zPosition="-10" backgroundColor="tile_clock1" />
+		<!-- Tiles 3 -->
+		<eLabel position="60,620" size="125,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="190,620" size="580,60" zPosition="-10" backgroundColor="tile_epg1" />
+		<eLabel position="775,620" size="60,60" zPosition="-10" backgroundColor="tile_epg1" />
+		<eLabel position="840,620" size="60,60" zPosition="-10" backgroundColor="tile_info2" />
+		<eLabel position="905,620" size="190,60" zPosition="-10" backgroundColor="tile_info2" />
+		<widget source="session.CurrentService" render="Label" position="65,435" size="115,105" font="Regular; 60" halign="center" valign="center" noWrap="1" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ExtendedServiceInfo">ServiceNumber</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="195,490" size="385,35" font="Regular;30" valign="center" noWrap="1" backgroundColor="backtop" transparent="1" foregroundColor="foreground" halign="center">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="65,524" zPosition="4" size="115,25" font="Regular; 22" halign="center" foregroundColor="foreground" backgroundColor="backtop" transparent="1">
+			<convert type="VServiceOrbitalPosition">Full</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="190,525" size="385,25" font="Regular; 20" valign="center" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="foreground" halign="center">
+			<convert type="ServiceName">Provider</convert>
+		</widget>
+		<!-- Service Info Start -->
+		<widget source="session.RecordState" render="FixedLabel" text="REC" position="710,490" size="60,60" zPosition="2" font="Regular; 24" valign="center" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" position="710,490" size="60,60" zPosition="3" valign="center" halign="center" text=" " backgroundColor="tile_rec">
+			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide">Blink</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_format_on.png" position="775,490" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsWidescreen</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_txt_on.png" position="840,490" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">HasTelext</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_hd_on.png" position="905,490" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">VideoWidth</convert>
+			<convert type="ValueRange">721,1980</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="AudioIcon" position="970,490" zPosition="2" path="icons/audio" size="60,60" alphatest="blend">
+			<convert type="VAudioInfo">AudioIcon</convert>
+		</widget>
+		<widget source="HbbtvApplication" render="Pixmap" pixmap="AtileHD/icons/ico_hbbtv_on.png" position="1035,490" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_crypt_on.png" position="840,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsCrypted</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_sub_on.png" position="905,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">SubservicesAvailable</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_subtitel_on.png" position="970,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="VServiceInfo">SubtitlesAvailable</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_audio_on.png" position="1035,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="VServiceInfo">AudioTracksAvailable</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<!-- Service Info End -->
+		<!-- Service Info off Icons Start -->
+		<ePixmap pixmap="AtileHD/icons/ico_format_off.png" position="775,490" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_txt_off.png" position="840,490" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_hd_off.png" position="905,490" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_sound_off.png" position="970,490" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_hbbtv_off.png" position="1035,490" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_crypt_off.png" position="840,555" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_sub_off.png" position="905,555" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_subtitel_off.png" position="970,555" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_audio_off.png" position="1035,555" size="60,60" zPosition="1" alphatest="blend"/>
+		<!-- Service Info off Icons End -->	
+		<!-- TunerInfo Start -->
+		<widget source="session.FrontendInfo" render="FixedLabel" text="DVB-S" position="580,490" size="60,60" font="Regular;18" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="center" valign="center" zPosition="5">
+			<convert type="FrontendInfo">TYPE</convert>
+			<convert type="ValueRange">0,0</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" render="FixedLabel" text="DVB-C" position="580,490" size="60,60" font="Regular; 18" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="center" valign="center" zPosition="5">
+			<convert type="FrontendInfo">TYPE</convert>
+			<convert type="ValueRange">1,1</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" render="FixedLabel" text="DVB-T" position="580,490" size="60,60" font="Regular;18" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="center" valign="center" zPosition="5">
+			<convert type="FrontendInfo">TYPE</convert>
+			<convert type="ValueRange">2,2</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="tile_red" position="580,490" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">1</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="tile_red" position="610,490" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">2</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="tile_red" position="580,520" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">4</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="tile_red" position="610,520" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">8</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="tile_green" position="580,490" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">0,0</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="tile_green" position="610,490" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">1,1</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="tile_green" position="580,520" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">2,2</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="tile_green" position="610,520" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">3,3</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<!-- TunerInfo End -->
+		<!-- Event Slider -->
+		<widget source="session.Event_Now" render="Progress" foregroundColor="slider_col_1" position="190,555" size="580,60" zPosition="1" transparent="1">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Picon" position="75,555" zPosition="4" size="100,60" transparent="1" alphatest="blend">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="775,557" size="60,30" font="Regular; 20" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="2">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<eLabel text="-" position="775,572" size="60,30" font="Regular; 20" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="2" />
+		<widget source="session.Event_Now" render="Label" position="775,592" size="60,30" font="Regular; 20" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="2">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="195,555" size="470,60" font="Regular; 25" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="670,555" size="100,60" font="Regular;20" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="EventTime">Remaining</convert>
+			<convert type="RemainingToText">InMinutes</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="775,620" size="60,30" font="Regular; 20" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<eLabel text="-" position="775,637" size="60,30" font="Regular; 20" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="session.Event_Next" render="Label" position="775,655" size="60,30" font="Regular; 20" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="195,620" size="470,60" font="Regular; 25" halign="left" valign="top" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="670,620" size="100,60" font="Regular;20" halign="center" valign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="EventTime">Duration</convert>
+			<convert type="ClockToText">InMinutes</convert>
+		</widget>
+		<!-- Event End -->
+		<widget source="session.CurrentService" render="Label" position="60,620" size="125,30" font="Regular; 22" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ServiceInfo">VideoWidth</convert>
+		</widget>
+		<eLabel text="x" position="60,640" size="125,25" font="Regular; 18" halign="center" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget source="session.CurrentService" render="Label" position="60,655" size="125,30" font="Regular; 22" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" valign="center" zPosition="0">
+			<convert type="ServiceInfo">VideoHeight</convert>
+		</widget>
+		<!-- SNR AGC Start -->
+		<widget source="session.FrontendStatus" render="Label" position="645,490" size="60,30" font="Regular;18" backgroundColor="background" foregroundColor="foreground" transparent="1" valign="center" halign="center" zPosition="2">
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Label" position="645,520" size="60,30" font="Regular;18" backgroundColor="background" foregroundColor="foreground" transparent="1" valign="center" halign="center" zPosition="2">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Progress" position="645,490" size="60,30" zPosition="1" foregroundColor="slider_col_2" transparent="1">
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Progress" position="645,520" size="60,30" zPosition="1" foregroundColor="slider_col_3" transparent="1">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<!-- SNR AGC End -->
+		<!-- EMU Start -->
+		<widget source="session.CurrentService" render="VtiEmuInfo" position="60,685" size="600,25" zPosition="1" font="Regular;16" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="session.CurrentService" render="Label" position="625,685" size="600,25" zPosition="1" font="Regular; 16" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="right" noWrap="1">
+			<convert type="VtiInfo">EcmInfo</convert>
+		</widget>
+		<!-- EMU End -->
+		<widget source="global.CurrentTime" render="Label" position="1100,495" size="125,30" font="Regular;23" halign="center" backgroundColor="background" transparent="1" foregroundColor="foreground">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1100,523" size="125,30" font="Regular; 18" halign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+		<!-- Analog Clock -->
+		<ePixmap position="1100,555" zPosition="1" size="125,125" pixmap="AtileHD/menu/styleclock.png" alphatest="blend" />
+		<widget source="global.CurrentTime" render="VWatches" position="1131,588" size="61,61" zPosition="4" foregroundColor="slider" alphatest="on">
+			<convert type="VExtraNumText">secHand</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="VWatches" position="1133,590" size="57,57" zPosition="3" foregroundColor="foreground" alphatest="on">
+			<convert type="VExtraNumText">minHand</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="VWatches" position="1141,598" size="41,41" zPosition="2" foregroundColor="foreground" alphatest="on">
+			<convert type="VExtraNumText">hourHand</convert>
+		</widget>
+		<!-- Analog Clock End -->
+		<!-- Fan and Temperature Start -->
+		<widget source="session.CurrentService" render="Label" font="Regular; 20" position="905,620" size="190,30" halign="center" backgroundColor="background" transparent="1" noWrap="1" foregroundColor="foreground" valign="center">
+			<convert type="VtiInfo">TempInfo</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" font="Regular; 20" position="905,650" size="190,30" halign="center" backgroundColor="background" transparent="1" noWrap="1" foregroundColor="foreground">
+			<convert type="VtiInfo">FanInfo</convert>
+		</widget>
+		<!-- Fan and Temperature End -->
+		<!-- Update Info -->
+		<widget source="session.CurrentService" position="1100,490" size="125,60" zPosition="-5" render="FixedLabel" backgroundColor="tile_red">
+			<convert type="ConfigEntryTest">config.usage.update_available,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_update_info.png" position="143,422" size="125,125" zPosition="-5" transparent="1" alphatest="blend">
+			<convert type="ConfigEntryTest">config.usage.update_available,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<!-- Update Info End -->
+	</screen>
+	<!-- SecondInfoBar -->
+	<screen name="SecondInfoBar" position="0,0" size="1280,720" title="Infobar" backgroundColor="transparent" flags="wfNoBorder">
+		<!-- Tiles Back -->
+		<eLabel position="50,480" size="1185,230" zPosition="-15" backgroundColor="tile_back" />
+		<!-- Tiles 1 -->
+		<eLabel position="60,425" size="125,125" zPosition="-10" backgroundColor="tile_channel" />
+		<eLabel position="190,490" size="385,60" zPosition="-10" backgroundColor="tile_prog" />
+		<eLabel position="580,490" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="645,490" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="710,490" size="60,60" zPosition="-10" backgroundColor="tile_rec" />
+		<eLabel position="775,490" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="840,490" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="905,490" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="970,490" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="1035,490" size="60,60" zPosition="-10" backgroundColor="tile_info0" />
+		<eLabel position="1100,490" size="125,60" zPosition="-10" backgroundColor="tile_clock0" />
+		<!-- Tiles 2 -->
+		<eLabel position="60,555" size="125,60" zPosition="-10" backgroundColor="tile_picon" />
+		<eLabel position="190,555" size="580,60" zPosition="-10" backgroundColor="tile_epg0" />
+		<eLabel position="775,555" size="60,60" zPosition="-10" backgroundColor="tile_epg0" />
+		<eLabel position="840,555" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="905,555" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="970,555" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="1035,555" size="60,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="1100,555" size="125,125" zPosition="-10" backgroundColor="tile_clock1" />
+		<!-- Tiles 3 -->
+		<eLabel position="60,620" size="125,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="190,620" size="580,60" zPosition="-10" backgroundColor="tile_epg1" />
+		<eLabel position="775,620" size="60,60" zPosition="-10" backgroundColor="tile_epg1" />
+		<eLabel position="840,620" size="60,60" zPosition="-10" backgroundColor="tile_info2" />
+		<eLabel position="905,620" size="190,60" zPosition="-10" backgroundColor="tile_info2" />
+		<!-- Tiles SIB -->
+		<eLabel position="60,50" size="125,60" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="190,50" size="580,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="190,115" size="450,370" zPosition="-10" backgroundColor="tile_epg2" />
+		<eLabel position="645,115" size="125,60" zPosition="-10" backgroundColor="tile_orange" />
+		<eLabel position="775,115" size="450,60" zPosition="-10" backgroundColor="tile_info1" />
+		<eLabel position="775,180" size="450,305" zPosition="-10" backgroundColor="tile_epg2" />
+		<!-- SIB EPG Start -->
+		<eLabel text="Now:" position="60,50" size="125,60" zPosition="2" font="Regular; 22" halign="center" valign="center" foregroundColor="foreground" transparent="1" backgroundColor="background" />
+		<eLabel text="Next:" position="645,115" size="125,60" zPosition="2" font="Regular; 22" halign="center" valign="center" foregroundColor="foreground" transparent="1" backgroundColor="background" />
+		<widget source="session.Event_Now" render="Label" position="195,50" size="560,60" font="Regular; 22" halign="left" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" noWrap="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="780,115" size="430,60" font="Regular; 22" halign="left" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" noWrap="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<!-- Running Text Start -->
+		<widget source="session.Event_Now" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,always=0,startdelay=5000,wrap" position="195,120" size="440,352" font="Regular; 22" zPosition="1" backgroundColor="tile_epg2" transparent="1">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget source="session.Event_Next" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,always=0,startdelay=5000,wrap" position="780,185" size="440,295" font="Regular; 22" zPosition="1" backgroundColor="tile_epg2" transparent="1">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<!-- Running Text End -->
+		<!-- SIB EPG End -->
+		<widget source="session.CurrentService" render="Label" position="65,435" size="115,105" font="Regular; 60" halign="center" valign="center" noWrap="1" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ExtendedServiceInfo">ServiceNumber</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="195,490" size="385,35" font="Regular;30" valign="center" noWrap="1" backgroundColor="backtop" transparent="1" foregroundColor="foreground" halign="center">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="65,524" zPosition="4" size="115,25" font="Regular; 22" halign="center" foregroundColor="foreground" backgroundColor="backtop" transparent="1">
+			<convert type="VServiceOrbitalPosition">Full</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="190,525" size="385,25" font="Regular; 20" valign="center" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="foreground" halign="center">
+			<convert type="ServiceName">Provider</convert>
+		</widget>
+		<!-- Service Info Start -->
+		<widget source="session.RecordState" render="FixedLabel" text="REC" position="710,490" size="60,60" zPosition="2" font="Regular; 24" valign="center" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" position="710,490" size="60,60" zPosition="3" valign="center" halign="center" text=" " backgroundColor="tile_rec">
+			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide">Blink</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_format_on.png" position="775,490" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsWidescreen</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_txt_on.png" position="840,490" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">HasTelext</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_hd_on.png" position="905,490" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">VideoWidth</convert>
+			<convert type="ValueRange">721,1980</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_dolby_on.png" position="970,490" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsMultichannel</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_crypt_on.png" position="840,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">IsCrypted</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_sub_on.png" position="905,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="ServiceInfo">SubservicesAvailable</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_subtitel_on.png" position="970,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="VServiceInfo">SubtitlesAvailable</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_audio_on.png" position="1035,555" size="60,60" zPosition="2" alphatest="blend">
+			<convert type="VServiceInfo">AudioTracksAvailable</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<!-- Service Info End -->
+		<!-- Service Info off Icons Start -->
+		<ePixmap pixmap="AtileHD/icons/ico_format_off.png" position="775,490" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_txt_off.png" position="840,490" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_hd_off.png" position="905,490" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_dolby_off.png" position="970,490" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_hbbtv_off.png" position="1035,490" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_crypt_off.png" position="840,555" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_sub_off.png" position="905,555" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_subtitel_off.png" position="970,555" size="60,60" zPosition="1" alphatest="blend"/>
+		<ePixmap pixmap="AtileHD/icons/ico_audio_off.png" position="1035,555" size="60,60" zPosition="1" alphatest="blend"/>
+		<!-- Service Info off Icons End -->	
+		<!-- TunerInfo start -->
+		<widget source="session.FrontendInfo" render="FixedLabel" text="DVB-S" position="580,490" size="60,60" font="Regular;18" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="center" valign="center" zPosition="5">
+			<convert type="FrontendInfo">TYPE</convert>
+			<convert type="ValueRange">0,0</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" render="FixedLabel" text="DVB-C" position="580,490" size="60,60" font="Regular; 18" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="center" valign="center" zPosition="5">
+			<convert type="FrontendInfo">TYPE</convert>
+			<convert type="ValueRange">1,1</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" render="FixedLabel" text="DVB-T" position="580,490" size="60,60" font="Regular;18" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="center" valign="center" zPosition="5">
+			<convert type="FrontendInfo">TYPE</convert>
+			<convert type="ValueRange">2,2</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="tile_red" position="580,490" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">1</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="tile_red" position="610,490" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">2</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="tile_red" position="580,520" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">4</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.TunerInfo" zPosition="2" backgroundColor="tile_red" position="610,520" render="FixedLabel" size="30,30">
+			<convert type="TunerInfo">TunerUseMask</convert>
+			<convert type="ValueBitTest">8</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="tile_green" position="580,490" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">0,0</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="tile_green" position="610,490" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">1,1</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="tile_green" position="580,520" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">2,2</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.FrontendInfo" zPosition="3" backgroundColor="tile_green" position="610,520" render="FixedLabel" size="30,30">
+			<convert type="FrontendInfo">NUMBER</convert>
+			<convert type="ValueRange">3,3</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<!-- TunerInfo End -->
+		<!-- Event Slider -->
+		<widget source="session.Event_Now" render="Progress" foregroundColor="slider_col_1" position="190,555" size="580,60" zPosition="1" transparent="1">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Picon" position="75,555" zPosition="4" size="100,60" transparent="1" alphatest="blend">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="775,557" size="60,30" font="Regular; 20" halign="center" backgroundColor="background" transparent="1" zPosition="2">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<eLabel text="-" position="775,572" size="60,30" font="Regular; 20" halign="center" backgroundColor="background" transparent="1" zPosition="2" />
+		<widget source="session.Event_Now" render="Label" position="775,592" size="60,30" font="Regular; 20" halign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="195,555" size="470,60" font="Regular; 25" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="670,555" size="100,60" font="Regular;20" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="EventTime">Remaining</convert>
+			<convert type="RemainingToText">InMinutes</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="775,620" size="60,30" font="Regular; 20" halign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<eLabel text="-" position="775,637" size="60,30" font="Regular; 20" halign="center" backgroundColor="background" foregroundColor="foreground" transparent="1" />
+		<widget source="session.Event_Next" render="Label" position="775,655" size="60,30" font="Regular; 20" halign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="195,620" size="470,60" font="Regular; 25" halign="left" valign="top" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="670,620" size="100,60" font="Regular;20" halign="center" valign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="EventTime">Duration</convert>
+			<convert type="ClockToText">InMinutes</convert>
+		</widget>
+		<!-- Event End -->
+		<widget source="session.CurrentService" render="Label" position="60,620" size="125,30" font="Regular; 22" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ServiceInfo">VideoWidth</convert>
+		</widget>
+		<eLabel text="x" position="60,640" size="125,25" font="Regular; 18" halign="center" foregroundColor="titletext" backgroundColor="background" transparent="1" />
+		<widget source="session.CurrentService" render="Label" position="60,655" size="125,30" font="Regular; 22" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1" valign="center" zPosition="0">
+			<convert type="ServiceInfo">VideoHeight</convert>
+		</widget>
+		<!-- SNR AGC Start -->
+		<widget source="session.FrontendStatus" render="Label" position="645,490" size="60,30" font="Regular;18" backgroundColor="background" foregroundColor="foreground" transparent="1" valign="center" halign="center" zPosition="2">
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Label" position="645,520" size="60,30" font="Regular;18" backgroundColor="background" foregroundColor="foreground" transparent="1" valign="center" halign="center" zPosition="2">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Progress" position="645,490" size="60,30" zPosition="1" foregroundColor="slider_col_2" transparent="1">
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Progress" position="645,520" size="60,30" zPosition="1" foregroundColor="slider_col_3" transparent="1">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<!-- SNR AGC End -->
+		<widget source="session.CurrentService" render="Label" position="60,685" zPosition="1" size="1165,25" font="Regular;16" foregroundColor="foreground" backgroundColor="background" transparent="1" halign="center">
+			<convert type="SmartInfo">ExpertInfo</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1100,495" size="125,30" font="Regular;23" halign="center" backgroundColor="background" transparent="1" foregroundColor="foreground">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1100,523" size="125,30" font="Regular; 18" halign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+		<!-- Analog Clock Start -->
+		<ePixmap position="1100,555" zPosition="1" size="125,125" pixmap="AtileHD/menu/styleclock.png" alphatest="blend" />
+		<widget source="global.CurrentTime" render="VWatches" position="1131,588" size="61,61" zPosition="4" foregroundColor="slider" alphatest="on">
+			<convert type="VExtraNumText">secHand</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="VWatches" position="1133,590" size="57,57" zPosition="3" foregroundColor="foreground" alphatest="on">
+			<convert type="VExtraNumText">minHand</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="VWatches" position="1141,598" size="41,41" zPosition="2" foregroundColor="foreground" alphatest="on">
+			<convert type="VExtraNumText">hourHand</convert>
+		</widget>
+		<!-- Analog Clock End -->
+		<!-- Fan and Temperature Start -->
+		<widget source="session.CurrentService" render="Label" font="Regular; 20" position="905,620" size="190,30" halign="center" backgroundColor="background" transparent="1" noWrap="1" foregroundColor="foreground" valign="center">
+			<convert type="VtiInfo">TempInfo</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" font="Regular; 20" position="905,650" size="190,30" halign="center" backgroundColor="background" transparent="1" noWrap="1" foregroundColor="foreground">
+			<convert type="VtiInfo">FanInfo</convert>
+		</widget>
+		<!-- Fan and Temperature End -->
+		<!-- Update Info -->
+		<widget source="session.CurrentService" position="1100,490" size="125,60" zPosition="-5" render="FixedLabel" backgroundColor="tile_red">
+			<convert type="ConfigEntryTest">config.usage.update_available,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="AtileHD/icons/ico_update_info.png" position="143,422" size="125,125" zPosition="-5" transparent="1" alphatest="blend">
+			<convert type="ConfigEntryTest">config.usage.update_available,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<!-- Update Info End -->
+	</screen>
+</skin>

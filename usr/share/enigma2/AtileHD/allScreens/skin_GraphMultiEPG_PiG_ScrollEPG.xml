@@ -1,0 +1,65 @@
+<skin>
+	<screen name="GraphMultiEPG" position="0,0" size="1280,720" title="Electronic Programm Guide" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="865,55" zPosition="-10" backgroundColor="tile_menu2" />
+		<eLabel position=" 55,160" size="865,120" zPosition="-10" backgroundColor="tile_menu1" name="+" />
+		<eLabel position=" 55,285" size="1175,330" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="925,100" size="305,180" zPosition="-10" backgroundColor="tile_menu3" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<widget source="session.VideoPicture" render="Pig" position="935,110" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="880,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="Event" render="Label" position="65,100" size="740,30" font="Regular; 25" foregroundColor="foreground" backgroundColor="tile_menu2" transparent="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="Event" render="Progress" foregroundColor="slider_col_1" position="55,100" size="865,55" zPosition="-5" transparent="1">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<widget source="Event" render="Label" position="65,130" size="560,30" font="Regular;22" foregroundColor="foreground" backgroundColor="tile_menu2" transparent="1">
+			<convert type="EventName">FullDescription</convert>
+		</widget>
+		<widget source="Event" render="Label" position="630,130" size="60,30" font="Regular;22" foregroundColor="foreground" backgroundColor="tile_menu2" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText">%H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="690,130" size="80,30" font="Regular;22" foregroundColor="foreground" backgroundColor="tile_menu2" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Format:- %H:%M</convert>
+		</widget>
+		<widget source="Event" render="Label" position="765,100" size="150,30" font="Regular;22" foregroundColor="foreground" backgroundColor="tile_menu2" transparent="1" halign="right">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText">Format:%A</convert>
+		</widget>
+		<widget source="Event" render="Label" position="765,130" size="150,30" font="Regular;22" foregroundColor="foreground" backgroundColor="tile_menu2" transparent="1" halign="right">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+		<widget source="Event" render="VRunningText" options="movetype=running,startpoint=0,direction=top,steptime=150,repeat=2,always=0,startdelay=10000,wrap" position="65,163" size="850,115" font="Regular;20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget name="timeline_text" position="0,283" size="1280,22" selectionDisabled="1" transparent="1" zPosition="5" backgroundColor="background" foregroundColor="foreground" />
+		<widget name="list" position="65,310" size="1155,300" itemHeight="60" ServiceNameForegroundColor="foreground" ServiceNameBackgroundColor="tile_menu0" EntryBorderColor="foreground" EntryBackgroundColor="tile_menu0" EntryBackgroundColorSelected="selectedBG" EntryNowForegroundColorSelected="foreground" EntryNowBackgroundColor="green" EntryNowBackgroundColorSelected="selectedBG" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" />
+		<widget name="timeline_now" position="0,310" zPosition="2" size="5,300" pixmap="AtileHD/extensions/timeline-now.png" alphatest="on" />
+		<eLabel position="170,305" size="1,305" zPosition="2" backgroundColor="white" />
+		<widget name="timeline0" pixmap="AtileHD/extensions/timeline.png" position="0,305" size="1,5" zPosition="0" />
+		<widget name="timeline1" pixmap="AtileHD/extensions/timeline.png" position="0,305" size="1,5" zPosition="0" />
+		<widget name="timeline2" pixmap="AtileHD/extensions/timeline.png" position="0,305" size="1,5" zPosition="0" />
+		<widget name="timeline3" pixmap="AtileHD/extensions/timeline.png" position="0,305" size="1,5" zPosition="0" />
+		<widget name="timeline4" pixmap="AtileHD/extensions/timeline.png" position="0,305" size="1,5" zPosition="0" />
+		<widget name="timeline5" pixmap="AtileHD/extensions/timeline.png" position="0,305" size="1,5" zPosition="0" />
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+	</screen>
+</skin>

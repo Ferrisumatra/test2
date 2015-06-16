@@ -1,0 +1,34 @@
+<skin>
+	<screen name="DeviceManager2" position="center,center" size="700,400" title="DeviceManager2" >
+		<ePixmap pixmap="skin_default/buttons/button_red.png" position="10,12"  size="15,16" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/button_green.png" position="180,12" size="15,16" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/button_yellow.png" position="350,12" size="15,16" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/button_blue.png" position="520,12" size="15,16" alphatest="on" />
+		<widget source="key_red" render="Label" position="30,0" size="140,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget name="key_green" position="200,0" size="140,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget name="key_yellow" position="370,0" size="140,40" font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget name="key_blue" position="540,0" size="140,40"  font="Regular;20" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget source="menu" render="Listbox" position="5,80" size="690,270" scrollbarMode="showOnDemand" >
+			<convert type="TemplatedMultiContent" transparent="0">
+				{"template": [
+						MultiContentEntryPixmapAlphaTest(pos = (5, 23), size = (48, 48), png = 1), # index 1: picture
+						MultiContentEntryText(pos = (60, 2), size = (680, 24), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2), # index 2 disk  model
+						MultiContentEntryText(pos = (60, 26), size = (680, 20), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3), # index 3 disk vendor
+						MultiContentEntryText(pos = (60, 48), size = (680, 20), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 4), # index 4 disk size
+						MultiContentEntryText(pos = (60, 70), size = (680, 20), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5), # index 5 filesystem type
+					],
+				"fonts": [gFont("Regular", 22),gFont("Regular", 16)],
+				"itemHeight": 94
+				}
+			</convert>
+		</widget>
+	</screen>
+	<screen name="DeviceManager2Message" position="center,center" size="700,400" title="DeviceManager2 Message" >
+		<widget name="messagepic" pixmaps="skin_default/icons/input_info.png,skin_default/icons/input_error.png,skin_default/icons/input_question.png" position="10,10" size="53,53" transparent="1" alphatest="on"/>
+		<widget name="messagetype" position="65,10" size="630,53"  font="Regular;24" halign="left" valign="center" foregroundColor="#ececec" transparent="1" />
+		<widget name="messagetext" position="10,70" size="680,320"  font="Regular;20" halign="center" valign="center" foregroundColor="#ececec" transparent="1" />
+	</screen>
+	<screen name="DeviceManager2Summary" position="0,0" size="250,20">
+		<widget source="entry" render="RollerCharLCD" size="250,20" position="0,0" font="Regular;20" noWrap="1" />
+	</screen>
+</skin>

@@ -1,0 +1,25 @@
+<default>
+	<prerequisites>
+		<tag type="services" />
+		<bcastsystem type="DVB-S" />
+		<satellite type="130" />
+	</prerequisites>
+	<info>
+		<author>plnick@vuplus-support.org</author>
+		<name>Hotbird (13.0E)</name>
+	</info>
+	<files type="directories">
+		<file type="services" name="lamedb.130"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_000.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_001.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_002.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_003.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_004.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_005.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_006.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_007.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_008.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_009.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_130_010.tv"></file>
+	</files>
+</default>

@@ -1,0 +1,40 @@
+<skin>
+	<screen name="ChannelSelection" position="0,0" size="1280,720" title="Channel Selection" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="725,50" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position=" 55,155" size="725,330" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="785,355" size="445,260" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="55,490" size="725,125" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<eLabel text="Channel Selection" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.VideoPicture" render="Pig" OverScan="0" position="785,100" zPosition="2" size="445,250" backgroundColor="picture" />
+		<widget source="Title" render="Label" position="70,110" size="700,28" font="Regular;23" foregroundColor="labeltext" backgroundColor="background" transparent="1" />
+		<widget source="ServiceEvent" render="Picon" position="785,30" size="100,60" zPosition="2" transparent="1" alphatest="blend">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+		<widget name="list" position="70,166" size="700,305" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="selectedScrollFG" scrollbarSliderBorderColor="selectedScrollBG" colorServiceDescription="labeltext2" colorServiceDescriptionSelected="selectedFG" colorEventProgressbarBorder="progressbar_color" colorEventProgressbarBorderSelected="selectedFG" foregroundColorServiceNotAvail="#777777" colorServiceRecording="red" serviceItemHeight="30" serviceNumberFont="Regular;22" serviceNameFont="Regular;22" serviceInfoFont="Regular;21" transparent="1" />
+		<widget source="ServiceEvent" render="Label" position="795,360" size="435,24" font="Regular;20" foregroundColor="labeltext" backgroundColor="background" transparent="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="795,390" size="435,225" font="Regular; 20" foregroundColor="foreground" backgroundColor="tile_menu1" transparent="1" valign="top">
+			<convert type="EventName">ExtendedDescription</convert>
+		</widget>
+		<widget source="ServiceEvent" render="NextEvents" position="65,495" size="705,120" noWrap="1" font="Regular;20" foregroundColor="foreground" backgroundColor="background" transparent="1" >
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+		<widget name="key_red" position="70,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_red_big" transparent="1" />
+		<widget name="key_green" position="365,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_green_big" transparent="1" />
+		<widget name="key_yellow" position="660,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_yellow_big" transparent="1" />
+		<widget name="key_blue" position="955,635" size="260,25" zPosition="1" font="Regular;20" halign="left" foregroundColor="foreground" backgroundColor="tile_blue_big" transparent="1" />
+	</screen>
+</skin>

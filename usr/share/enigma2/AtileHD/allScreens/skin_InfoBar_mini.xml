@@ -1,0 +1,56 @@
+<skin>
+	<screen name="InfoBar" position="0,0" size="1280,720" title="Infobar" backgroundColor="transparent" flags="wfNoBorder">
+		<!-- Tiles Back -->
+		<eLabel position="0,640" size="1280,80" zPosition="-15" backgroundColor="tile_back" />
+		<!-- Tiles 1 -->
+		<eLabel position="1045,650" size="60,60" zPosition="-10" backgroundColor="tile_rec" />
+		<eLabel position="1110,650" size="125,60" zPosition="-10" backgroundColor="tile_clock0" />
+		<!-- Tiles 2 -->
+		<eLabel position="50,650" size="125,60" zPosition="-10" backgroundColor="tile_picon" />
+		<eLabel position="180,650" size="455,60" zPosition="-10" backgroundColor="tile_epg0" />
+		<!-- Tiles 3 -->
+		<eLabel position="640,650" size="400,60" zPosition="-10" backgroundColor="tile_epg1" />
+		<widget source="session.RecordState" render="FixedLabel" text="REC" position="1045,650" size="60,60" zPosition="2" font="Regular; 24" valign="center" halign="center" foregroundColor="foreground" backgroundColor="background" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" position="1045,650" size="60,60" zPosition="3" valign="center" halign="center" text=" " backgroundColor="tile_rec">
+			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide">Blink</convert>
+		</widget>
+		<!-- Service Info End -->
+		<!-- Event Slider -->
+		<widget source="session.Event_Now" render="Progress" foregroundColor="slider_col_1" position="180,650" size="455,60" zPosition="1" transparent="1">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Picon" position="65,650" zPosition="4" size="100,60" transparent="1" alphatest="blend">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="185,650" size="350,60" font="Regular; 25" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="535,650" size="100,60" font="Regular;20" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="foreground" zPosition="2">
+			<convert type="EventTime">Remaining</convert>
+			<convert type="RemainingToText">InMinutes</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="645,650" size="295,60" font="Regular; 25" halign="left" valign="top" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="940,650" size="100,60" font="Regular;20" halign="center" valign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="EventTime">Duration</convert>
+			<convert type="ClockToText">InMinutes</convert>
+		</widget>
+		<!-- Event End -->
+		<widget source="global.CurrentTime" render="Label" position="1110,650" size="125,30" font="Regular;23" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="foreground">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1110,680" size="125,30" font="Regular; 18" valign="center" halign="center" backgroundColor="background" foregroundColor="foreground" transparent="1">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+		<!-- Update Info -->
+		<widget source="session.CurrentService" position="1110,650" size="125,60" zPosition="-5" render="FixedLabel" backgroundColor="tile_red">
+			<convert type="ConfigEntryTest">config.usage.update_available,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<!-- Update Info End -->
+	</screen>
+</skin>

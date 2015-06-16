@@ -1,0 +1,40 @@
+<skin>
+	<screen name="About" position="0,0" size="1280,720" title="About" flags="wfNoBorder">
+		<eLabel position="0,0" size="1280,720" zPosition="-15" backgroundColor="tile_back" />
+		<eLabel position=" 55,100" size="725,515" zPosition="-10" backgroundColor="tile_menu0" />
+		<eLabel position="785,295" size="445,320" zPosition="-10" backgroundColor="tile_menu1" />
+		<eLabel position="785,100" size="135,190" zPosition="-10" backgroundColor="tile_menu2" />
+		<eLabel position="925,100" size="305,190" zPosition="-10" backgroundColor="tile_menu_pig" />
+		<eLabel position=" 55,620" size="290,55" zPosition="-10" backgroundColor="tile_red_big" />
+		<eLabel position="350,620" size="290,55" zPosition="-10" backgroundColor="tile_green_big" />
+		<eLabel position="645,620" size="290,55" zPosition="-10" backgroundColor="tile_yellow_big" />
+		<eLabel position="940,620" size="290,55" zPosition="-10" backgroundColor="tile_blue_big" />
+		<eLabel position=" 55,675" size="290, 5" zPosition="-10" backgroundColor="tile_red" />
+		<eLabel position="350,675" size="290, 5" zPosition="-10" backgroundColor="tile_green" />
+		<eLabel position="645,675" size="290, 5" zPosition="-10" backgroundColor="tile_yellow" />
+		<eLabel position="940,675" size="290, 5" zPosition="-10" backgroundColor="tile_blue" />
+		<ePixmap position="880,325" zPosition="-9" size="256,256" pixmap="AtileHD/menu/schomi_skin_full.png" alphatest="blend" transparent="1" />
+		<widget source="session.VideoPicture" render="Pig" position="935,115" zPosition="3" size="284,160" backgroundColor="picture">
+			<convert type="ConfigEntryTest">config.usage.use_pig,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1020,40" size="200,50" font="Regular;50" halign="right" foregroundColor="titletext" backgroundColor="backtop" transparent="1">			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="Title" render="Label" position="70,47" size="950,43" font="Regular;35" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="session.CurrentService" render="VtiImageVersion" position="70,110" size="700, 43" zPosition="3" font="Regular;30" foregroundColor="titletext" backgroundColor="backtop" transparent="1" />
+		<widget source="EnigmaVersion" render="Label" position="70,151" size="700,30" font="Regular;26" backgroundColor="background" transparent="1" foregroundColor="labeltext" />
+		<widget source="ImageVersion" render="Label" position="70,183" size="700,30" font="Regular;26" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="FPVersion" render="Label" position="70,216" size="700,30" font="Regular;26" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="TunerHeader" render="Label" position="70,260" size="700,35" font="Regular;26" backgroundColor="background" transparent="1" foregroundColor="labeltext" />
+		<widget source="Tuner0" render="Label" position="70,300" size="700,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Tuner1" render="Label" position="70,325" size="700,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Tuner2" render="Label" position="70,350" size="700,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Tuner3" render="Label" position="70,375" size="700,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Tuner4" render="Label" position="70,400" size="700,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Tuner5" render="Label" position="70,425" size="700,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Tuner6" render="Label" position="70,450" size="700,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="Tuner7" render="Label" position="70,475" size="700,30" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+		<widget source="HDDHeader" render="Label" position="70,505" size="700,30" font="Regular;26" backgroundColor="background" transparent="1" foregroundColor="labeltext" />
+		<widget source="hddA" render="Label" position="70,545" size="700,65" font="Regular;24" foregroundColor="foreground" backgroundColor="background" transparent="1" />
+	</screen>
+</skin>

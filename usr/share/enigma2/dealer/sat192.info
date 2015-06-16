@@ -1,0 +1,28 @@
+<default>
+	<prerequisites>
+		<tag type="services" />
+		<bcastsystem type="DVB-S" />
+		<satellite type="192" />
+	</prerequisites>
+	<info>
+		<author>plnick@vuplus-support.org</author>
+		<name>Astra (19.2E)</name>
+	</info>
+	<files type="directories">
+		<file type="services" name="lamedb.192"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.favourites.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.favourites.radio"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_000.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_001.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_002.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_003.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_004.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_005.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_006.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_007.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_008.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_009.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_010.tv"></file>
+		<file type="favourites" directory="VTi/" name="userbouquet.vti_192_011.tv"></file>
+	</files>
+</default>

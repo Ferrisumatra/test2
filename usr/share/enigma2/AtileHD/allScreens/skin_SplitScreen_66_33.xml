@@ -1,0 +1,19 @@
+<skin>
+	<screen name="SplitScreen" position="0,0" zPosition="-1" size="1280,720" flags="wfNoBorder" backgroundColor="#00000000" >
+		<widget name="zap_focus" position="450,150" size="810,90" font="Regular;40" zPosition="10" halign="center" valign="center" backgroundColor="#00000000" transparent="1" foregroundColor="foreground" />
+		<widget name="video1" position="432,243" size="848,477" backgroundColor="transparent" />
+		<widget source="MasterService" render="Label" position="100,330" size="314,100" font="Regular;24" backgroundColor="#00000000" transparent="1" foregroundColor="foreground" halign="right">
+			<convert type="EventName" />
+		</widget>
+		<widget source="MasterService" render="Picon" position="314,258" zPosition="1" size="100,60" transparent="1" alphatest="blend">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+		<widget name="video2" position="0,-1" size="432,244" backgroundColor="transparent" />
+		<widget source="SlaveService" render="Label" position="450,95" size="700,50" font="Regular;24" backgroundColor="#00000000" transparent="1" foregroundColor="foreground" halign="left">
+			<convert type="EventName" />
+		</widget>
+		<widget source="SlaveService" render="Picon" position="450,15" zPosition="1" size="100,60" transparent="1" alphatest="blend">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+	</screen>
+</skin>
